@@ -16,12 +16,26 @@ export default class UserService {
     }
   }
   public async registerUser(user:UserInput): Promise<UserInput> { 
-    console.log("register");
-    
+    console.log("register"); 
     try {
         return await this.userInterface.registerUser(user);
     } catch (error) {
         throw error;
     }
   }
+
+  public async findUser (user:UserInput):Promise<UserOutput>{
+    
+    try {
+      console.log(user);
+      
+       const findUser=await this.userInterface.findUser(user);
+       return findUser;
+    } catch (error) {
+      return error ;
+    }
+     
+  }
 }
+
+ 
