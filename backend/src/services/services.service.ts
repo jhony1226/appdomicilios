@@ -7,5 +7,7 @@ import { Service } from 'typedi';
 export default class ServicesService {
   constructor(@ServiceInterface() private servicesInterface: ServiceRepository) {}
 
-  public async registerService(serviceInput: ServiceInput): Promise<ServiceOutput> {}
+  public async registerService(serviceInput: ServiceInput): Promise<ServiceOutput> {
+    return;
+  }
 }
