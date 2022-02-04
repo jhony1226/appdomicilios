@@ -1,17 +1,26 @@
-import { CategoryService } from './category.model';
+
 
 export interface ServiceInput {
-  id: number;
-  name: string;
-  duration: number;
-  price: number;
-  category: CategoryService;
+  idService: number,
+  idCliente: number;
+  idDeliv: number;
+  price:number;
+  destination: string;
+  source: string;
+  observation: string;
+  idStatus: number;
+  
+  
 }
 
 export interface ServiceOutput {
-  id: number;
-  name: string;
-  duration: number;
-  price: number;
-  category: CategoryService;
+  idService: number,
+  idCliente: number;
+  idDeliv: number;
+  price:number;
+  destination: string;
+  source: string;
+  observation: string;
+  idStatus: number;
+  
 }

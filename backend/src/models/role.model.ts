@@ -3,7 +3,7 @@
 export interface Role {
     id: number;
     name: string;
-    descrcription: string; 
+    description: string; 
     registerDate: Date;
     status: string;
   }
