@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6dce9d81-4ce5-45b4-8c7f-a3e8ac35aff7",
+		"_postman_id": "2a550e0d-70c6-4a96-b3ac-eb0b5c93228b",
 		"name": "appdomicilios",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -13,7 +13,9 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
@@ -32,7 +34,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{     \r\n        \"idRole\": \"6\",\r\n        \"name\": 6,\r\n        \"phone\": \"123456\",\r\n        \"email\": \"jhony@gmail.com\",\r\n        \"password\": \"1234\",  \r\n        \"status\": \"I\"\r\n}",
+							"raw": "{     \r\n        \"idRole\": \"6\",\r\n        \"name\": \"user 1\",\r\n        \"phone\": \"123456\",\r\n        \"email\": \"correo1@gmail.com\",\r\n        \"password\": \"1234\",  \r\n        \"status\": \"I\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,6 +86,361 @@
 								"api",
 								"user",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/user/getUsers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"getUsers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \r\n        \"idUser\":7,\r\n        \"idRole\": 29,\r\n        \"name\": \"user all \",\r\n        \"phone\": \"123456\",\r\n        \"email\": \"correo3@gmail.com\",\r\n        \"password\": \"1234\",  \r\n        \"status\": \"I\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/user/deleteUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"deleteUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \r\n        \"idUser\":7,\r\n        \"idRole\": 29,\r\n        \"name\": \"user all \",\r\n        \"phone\": \"123456\",\r\n        \"email\": \"correo3@gmail.com\",\r\n        \"password\": \"1234\",  \r\n        \"status\": \"I\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/user/updateUser/correo3@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"updateUser",
+								"correo3@gmail.com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "registerRole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"diciliario\",\r\n    \"description\":\"all\",\r\n    \"status\":\"I\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/role/registerRole/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"role",
+								"registerRole",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRoles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/role/getRoles/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"role",
+								"getRoles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRole",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"id\":10,\r\n    \"name\":\"domiciliarios\",\r\n    \"description\":\"permisos\",\r\n    \"status\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/role/updateRole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"role",
+								"updateRole"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRole",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":6\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/role/deleteRole/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"role",
+								"deleteRole",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "services",
+			"item": [
+				{
+					"name": "registerService",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCliente\":8,\r\n    \"idDeliv\":7,\r\n    \"price\":8000,\r\n    \"destination\":\"Atalaya\",\r\n    \"source\":\"oficina principal\",\r\n    \"observation\":\"Delicado\",\r\n    \"idStatus\":1\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/services/registerService/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"services",
+								"registerService",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getServices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/services/getServices/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"services",
+								"getServices",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteService",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idService\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/services/deleteService",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"services",
+								"deleteService"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateService",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idService\":9,\r\n    \"idCliente\":8,\r\n    \"idDeliv\":7,\r\n    \"price\":8000,\r\n    \"destination\":\"Centro\",\r\n    \"source\":\"oficina principal\",\r\n    \"observation\":\"Delicado\",\r\n    \"idStatus\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/services/updateService",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"services",
+								"updateService"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "statusService",
+			"item": [
+				{
+					"name": "registerStatusService",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"entregado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/statusService/registerStatusService",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"statusService",
+								"registerStatusService"
 							]
 						}
 					},
