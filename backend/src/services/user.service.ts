@@ -17,7 +17,6 @@ export default class UserService {
   }
   
   public async registerUser(user: UserInput): Promise<UserInput> {
-    console.log('register');
     try {
       return await this.userInterface.registerUser(user);
     } catch (error) {
@@ -33,6 +32,22 @@ export default class UserService {
     }
   }
 
+  public async findEmail(user: UserInput): Promise<UserInput> {
+    try {
+      return await this.userInterface.findEmail(user)
+    } catch (error) {
+      return error;
+    }
+  }
+
+  public async findPhone(user: UserInput): Promise<UserInput> {
+    try {
+      return await this.userInterface.findPhone(user)
+    } catch (error) {
+      return error;
+    }
+  }
+
   public async deleteUser(user: UserInput): Promise<UserInput> {
     try {
       return await this.userInterface.deleteUser(user)
@@ -42,6 +57,10 @@ export default class UserService {
   }
 
   public async UpdateUser(user:UserInput):Promise<UserOutput>{
-    return;
+    try {
+      return await this.userInterface.updateUser(user)
+    } catch (error) {
+      return error;
+    }
   }
 }
