@@ -68,6 +68,20 @@ export default (app: Router) => {
     }
   });
 
+  route.get('/getServicesByDeliv', async (req: Request, res: Response) => {
+    try {
+      const serviceService = Container.get(ServicesService);
+      const service = await serviceService.getServicesByDeliv(req.body as ServiceInput);
+      console.log(service);
+      
+      if(!service) return res.status(400).send({message:'Error al listar servicios'});
+
+      return res.status(200).send({servicios:service});
+    } catch (error) {
+      res.status(500).end();
+    }
+  });
+
   route.delete('/deleteService', 
   celebrate({
     [Segments.BODY]: Joi.object().keys({

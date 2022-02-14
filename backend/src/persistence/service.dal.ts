@@ -34,6 +34,20 @@ export default class ServicesDalService implements serviseRepository {
         }
       } ;
 
+      async getServicesByDeliv(service: ServiceInput): Promise<ServiceOutput[]> {
+        try { 
+          const query = {
+            text: 'select * from services where id_deliv = $1',
+            values:[service.idDeliv]
+          };
+          const res = await db.query(query); 
+          return res.rows;
+        } catch (error) {
+          Logger.error(`Error SQL => ${error}`);
+      throw error;
+        }
+      } ;
+
       async deleteService(service: ServiceInput): Promise<ServiceInput> {     
         const query = {
             text: 'delete from services where id=$1 ',
