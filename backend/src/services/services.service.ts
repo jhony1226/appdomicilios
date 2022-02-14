@@ -22,6 +22,14 @@ ServicesService {
       throw error;
     }
   }
+  public async getServicesByDeliv(service: ServiceInput): Promise<ServiceOutput[]> {
+    try {
+      return await this.servicesInterface.getServicesByDeliv(service);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   public async updateService(service: ServiceInput): Promise<ServiceOutput> {
     try {
       return await this.servicesInterface.updateService(service);

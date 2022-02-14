@@ -6,9 +6,7 @@ import { query } from 'winston';
 
 export default class UserDalService implements UserRepository {
   
-  findById(id: any): Promise<UserOutput> {
-    throw new Error('Method not implemented.');
-  }
+  
 
   async updateUser(user: UserInput): Promise<UserOutput> {
     const query = {
@@ -75,6 +73,22 @@ export default class UserDalService implements UserRepository {
       };
       const res = await db.query(query); 
       return res.rows[0] ;
+    } catch (error) {
+      throw error;
+      ;
+    }
+  };
+
+  async findUserById(user:UserInput): Promise<UserOutput> {
+    try {  
+      const query = {
+        text: 'select * from users  where id=$1',
+        values:[user.idUser]
+      };
+      const res = await db.query(query); 
+      if(res.rowCount>=1) return res.rows[0] ;
+
+      return undefined;
     } catch (error) {
       throw error;
       ;
