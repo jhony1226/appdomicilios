@@ -24,9 +24,11 @@ export default class ServicesDalService implements serviseRepository {
       async getServices(): Promise<ServiceOutput[]> {
         try { 
           const query = {
-            text: 'select * from services',
+            text: 'select * from services  ',
           };
           const res = await db.query(query); 
+          console.log(res.rows);
+          
           return res.rows;
         } catch (error) {
           Logger.error(`Error SQL => ${error}`);

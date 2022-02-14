@@ -58,11 +58,11 @@ export default (app: Router) => {
     try {
       const serviceService = Container.get(ServicesService);
       const service = await serviceService.getServices();
-      console.log(service);
+      console.log({service});
       
       if(!service) return res.status(400).send({message:'Error al listar servicios'});
 
-      return res.status(200).send({servicios:service});
+      return res.status(200).send(service);
     } catch (error) {
       res.status(500).end();
     }
