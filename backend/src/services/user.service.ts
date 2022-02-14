@@ -32,6 +32,14 @@ export default class UserService {
     }
   }
 
+  public async findUserById(user: UserInput): Promise<UserOutput> {
+    try {
+      return await this.userInterface.findUserById(user);
+    } catch (error) {
+      return error;
+    }
+  }
+
   public async findEmail(user: UserInput): Promise<UserInput> {
     try {
       return await this.userInterface.findEmail(user)

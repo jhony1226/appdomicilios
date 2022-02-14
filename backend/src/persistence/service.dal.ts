@@ -41,7 +41,9 @@ export default class ServicesDalService implements serviseRepository {
             values:[service.idDeliv]
           };
           const res = await db.query(query); 
-          return res.rows;
+          if(res.rowCount>=1) return res.rows;
+
+          return undefined;
         } catch (error) {
           Logger.error(`Error SQL => ${error}`);
       throw error;
