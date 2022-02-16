@@ -1,21 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './home/login/login.component';
+import { RouterModule, Routes } from '@angular/router'; 
 import { ListServicesComponent } from './service/list-services/list-services.component';
 import { RegisterComponent } from './service/register/register.component';
 import { UpdateServiceComponent } from './service/update-service/update-service.component';
-import { ListUsersComponent } from './user/list-users/list-users.component';
-import { RegisterUserComponent } from './user/register-user/register-user.component';
-import { UpdateUserComponent } from './user/update-user/update-user.component';
+ 
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
+ //{path:'',component:LoginComponent},
   {path:'register-service',component:RegisterComponent},
   {path:'list-services',component:ListServicesComponent},
-  {path:'update-service',component:UpdateServiceComponent},
-  {path:'register-user',component:RegisterUserComponent},
-  {path:'list-users',component:ListUsersComponent},
-  {path:'update-user',component:UpdateUserComponent}
+  {path:'update-service',component:UpdateServiceComponent}, 
 ];
 
 @NgModule({
