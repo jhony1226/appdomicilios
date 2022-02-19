@@ -69,7 +69,6 @@ export default (app: Router) => {
   route.post('/login',
     celebrate({
       [Segments.BODY]: Joi.object().keys({
-        idRole: Joi.number().required(),
         email: Joi.string().trim().email().required(),
         password: Joi.string().required(),
       }),
@@ -77,11 +76,11 @@ export default (app: Router) => {
 
     async (req: Request, res: Response) => {
       const userService = Container.get(UserService);
-      const user = await userService.findUser(req.body.email as UserInput);
+      const user = await userService.findUser(req.body.email);
       if (!user) return res.status(400).send({ message: 'Wrong email or password' });
 
-      const hash = await bcrypt.compare(req.body.password, user.password);
-      if (!hash) return res.status(400).send({ message: 'Wrong email or password' });
+      //const hash = await bcrypt.compare(req.body.password, user.password);
+      //if (!hash) return res.status(400).send({ message: 'Wrong email or password' });
 
       try {
         return res.status(200).json({
