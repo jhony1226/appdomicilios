@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { LoginComponent } from './home/login/login.component';
 import { ListServicesComponent } from './service/list-services/list-services.component';
 import { RegisterComponent } from './service/register/register.component';
@@ -10,12 +11,23 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
-  {path:'register-service',component:RegisterComponent},
-  {path:'list-services',component:ListServicesComponent},
-  {path:'update-service',component:UpdateServiceComponent},
-  {path:'register-user',component:RegisterUserComponent},
-  {path:'list-users',component:ListUsersComponent},
-  {path:'update-user',component:UpdateUserComponent}
+
+  {
+    path: 'home',
+    component: DashboardComponent, 
+    children: [ 
+        {path:'',component:ListServicesComponent},
+        {path:'list-services',component:ListServicesComponent},
+        {path:'register-service',component:RegisterComponent}, 
+      {path:'update-service',component:UpdateServiceComponent},
+      {path:'register-user',component:RegisterUserComponent},
+      {path:'list-users',component:ListUsersComponent},
+      {path:'update-user',component:UpdateUserComponent}
+    ]
+  },
+ 
+     
+  
 ];
 
 @NgModule({

@@ -4,17 +4,16 @@
   
       <!-- Icon -->
       <div class="fadeIn first">
-        <img src="https://cdn-icons-png.flaticon.com/512/75/75944.png" id="icon" alt="User Icon" />
+         <img src="../../../assets/img/domicilio.png" id="icon" alt="User Icon" /> 
       </div>
-  
-      <!-- Login Form -->
+      <samp>app Domicilios</samp> 
+      <!-- Login Form  -->
       <form>
         <input [(ngModel)]="loginData.email" type="text" id="login" class="fadeIn second" name="login" placeholder="email">
         <input [(ngModel)]="loginData.password" type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-        <button (click)="login()" class="fadeIn fourth">Login</button>
-      </form>
-  
+        <button (click)="login()" class="button" mat-raised-button color="warn">Login</button>
+     
+      </form>  
       
-  
     </div>
   </div>

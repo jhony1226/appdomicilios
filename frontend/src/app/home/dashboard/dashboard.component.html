@@ -1,0 +1,40 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar  color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">App Domicilio</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list class="dashboard">
+        <a mat-list-item
+        routerLink="list-services" >
+        <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
+        <p matLine >List Service</p>
+        </a>
+        <a mat-list-item
+        routerLink="register-servicev" >
+        <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
+        <p matLine >Register service</p>
+        </a>
+        <a mat-list-item
+        routerLink="update-service" >
+        <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
+        <p matLine >Update service</p>
+        </a>
+        
+      </mat-nav-list>
+    </mat-sidenav>
+    <div  class="example-sidenav-content">
+      
+        <router-outlet></router-outlet>
+      
+    </div>
+  </mat-sidenav-container>
+</div>

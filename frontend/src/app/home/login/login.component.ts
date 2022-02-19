@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     else{
       this._userService.login(this.loginData).subscribe({
         next:(v)=>{
-          this._route.navigate(['/list-services']);
+          this._route.navigate(['/home']);
           localStorage.setItem('token',v.token);
         }
       })

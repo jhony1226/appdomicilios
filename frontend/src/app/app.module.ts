@@ -13,10 +13,11 @@ import { UpdateServiceComponent } from './service/update-service/update-service.
 import { RegisterUserComponent } from './user/register-user/register-user.component';
 import { ListUsersComponent } from './user/list-users/list-users.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
-
+import {MatButtonModule} from '@angular/material/button';
 import {ServiceService} from'./services/service.service';
 import { UserService } from './services/user.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AuthGuard } from './guard/auth.guard';
 
@@ -24,6 +25,11 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import {MatTableModule} from '@angular/material/table';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list'; 
 
 @NgModule({
   declarations: [
@@ -36,7 +42,8 @@ import {MatTableModule} from '@angular/material/table';
     UpdateServiceComponent,
     RegisterUserComponent,
     ListUsersComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,12 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule
   ],
   providers: [ServiceService,UserService,TokenInterceptorService,AuthGuard],
   bootstrap: [AppComponent]

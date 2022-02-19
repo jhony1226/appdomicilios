@@ -41,17 +41,17 @@ h2 {
 }
 
 #formContent {
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
   background: #F1D00A;
   padding: 30px;
   width: 90%;
   max-width: 450px;
   position: relative;
-  padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
+   
 }
 
 #formFooter {
@@ -251,11 +251,12 @@ input[type=text]:placeholder {
 
 
 /* OTHERS */
-
-*:focus {
-    outline: none;
-} 
+  
 
 #icon {
-  width:60%;
+  width:60%; 
+}
+.button{
+  margin-top:10px ;
+  width: 40px;
 }
