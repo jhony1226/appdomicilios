@@ -38,7 +38,6 @@ export default (app: Router) => {
     async (req: Request, res: Response) => {
       const userService = Container.get(UserService);
       const findUser = await userService.findUser(req.body.email);
-
       if (findUser) return res.status(400).send({ message: 'The user is already registered' });
 
       const passHash = await bcrypt.hash(req.body.password, 10);
@@ -104,31 +103,70 @@ export default (app: Router) => {
   );
 
   route.put(
-    '/updateUser',
+    '/updateUser/:email',
     celebrate({
       [Segments.BODY]: Joi.object().keys({
-        idUser:Joi.number(),
+        idUser:Joi.number().required(),
         idRole: Joi.number().required(),
-        name: Joi.string(),
-        phone: Joi.string(),
-        email: Joi.string(),
-        password: Joi.string(),
-        status: Joi.string(),
+        name: Joi.string().required(),
+        phone: Joi.string().required(),
+        email: Joi.string().required(),
+        password: Joi.string().required(),
+        status: Joi.string().required(),
       }),
     }),
     async (req: Request, res: Response) => {
       const userService = Container.get(UserService);
-      const user = await userService.findUser(req.body.email);
-      if (!user) return res.status(400).send({ message: 'user not found' });
-      const fecha = new Date() ;
+      const user = await userService.findUser(req.params.email);
+      if (!user) return res.status(400).send({ message: 'Usuario no encontrado' });
+
+      if(req.body.email!=user.email){
+        const userEmail = await userService.findEmail(req.body as UserInput);
+       
+        if(userEmail)
+          return res.status(400).send({message:'Ya existen usuarios con esta informacion'})
+      }
+
+      if(req.body.phone!=user.phone){
+        const userPhone = await userService.findPhone(req.body as UserInput);
+      if(userPhone)
+        return res.status(400).send({message:'Ya existen usuarios con esta informacion'});
+
+      }    
+           
+      const updateUser = await userService.UpdateUser(req.body as UserInput);
+      
+      if(!updateUser) return res.status(400).send({message:"Error al intentar actualizar usuario"});
+
+      return res.status(200).send({message:'Datos actualizados'});
+
     }
   );
 
-  // app.use((error, req, res, next) => {
-  //   if (error.joi) {
-  //     return res.status(400).json({error: error.joi.message});
-  //   }
+  route.delete('/deleteUser', 
+      celebrate({[Segments.BODY]: Joi.object().keys({
+        idUser:Joi.number().required(),
+        idRole: Joi.number().required(),
+        name: Joi.string().required(),
+        phone: Joi.string().required(),
+        email: Joi.string().required(),
+        password: Joi.string().required(),
+        status: Joi.string().required(),
+       }),
+       
+      }),
+      async (req: Request, res: Response) => {
+        try {
+          const userService = Container.get(UserService);
+          const user = await userService.findUser(req.body.email as UserInput);
+          if (!user) return res.status(400).send({ message: 'Usuario no encontrado' });
 
-  //   return res.status(500).send(error)
-  // });
+          const deleteUser = await userService.deleteUser(req.body as UserInput);
+          if(!deleteUser) return res.status(400).send({message:'El usuario no se Elimino'});
+
+          return  res.status(400).send({message:'El usuario ha sido desactivado'});         
+        } catch (error) {
+          res.status(500).end();
+        }
+      });
 };
