@@ -17,7 +17,7 @@ import { ServiceService } from 'src/app/services/service.service';
 
  
 export class ListServicesComponent implements OnInit { 
-  displayedColumns: string[] = ['Domiciliario', 'Destino', 'Estado', 'Precio'];
+  displayedColumns: string[] = ['Domiciliario', 'Destino','Cliente', 'Estado', 'Precio', 'Fecha' ,'Accion'];
   dataSource = new MatTableDataSource<any>();
   servicesData:any;
 
@@ -47,6 +47,8 @@ export class ListServicesComponent implements OnInit {
         //this.openSnackBarError();
       },
     });  
+  }
+  deleteUserTeam = async (team: any) => {
   }
    
 

@@ -1,12 +1,38 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar  color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">App Domicilio</h1>
+  <mat-toolbar class="mat-elevation-z8"   >  
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button> 
+      <span >App Domicilios</span>
+      <span class="example-spacer"></span>
+      <div class="row mr-2 ml-auto">
+        <ul class="row m-0 align-items-center">
+          <li>
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu"
+              class="user mt-2 d-flex align-items-center"
+            >
+              <img src="../../../assets/img/user.jpg" alt="" class="user-image mr-1 p-2" />
+  
+              User Name
+              <mat-icon class="user-image-icon ml-1"
+                >keyboard_arrow_down</mat-icon
+              >
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+              </button>
+            </mat-menu>
+          </li>
+        </ul>
+      </div> 
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav
+  <mat-sidenav-container class=" example-sidenav-container" >
+    <mat-sidenav class="mat-elevation-z8" opened="true"
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
@@ -14,27 +40,32 @@
     >
       <mat-nav-list class="dashboard">
         <a mat-list-item
+        (click)="toggleActive($event)"
         routerLink="list-services" >
         <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
         <p matLine >List Service</p>
         </a>
         <a mat-list-item
+        (click)="toggleActive($event)"
         routerLink="register-servicev" >
         <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
         <p matLine >Register service</p>
         </a>
+        <mat-divider></mat-divider> 
         <a mat-list-item
+        (click)="toggleActive($event)"
         routerLink="update-service" >
         <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
-        <p matLine >Update service</p>
+        <p matLine >List Domiciliario</p>
         </a>
-        
+         
       </mat-nav-list>
     </mat-sidenav>
-    <div  class="example-sidenav-content">
-      
-        <router-outlet></router-outlet>
-      
+    <div id="tres" class="example-sidenav-content">
+      <router-outlet></router-outlet> 
     </div>
+     
   </mat-sidenav-container>
 </div>
+
+ 

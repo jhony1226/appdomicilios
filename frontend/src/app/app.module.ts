@@ -17,7 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {ServiceService} from'./services/service.service';
 import { UserService } from './services/user.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule} from '@angular/material/icon';
 
 import { AuthGuard } from './guard/auth.guard';
 
@@ -30,8 +30,11 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list'; 
+import { MatMenuModule } from '@angular/material/menu';
+import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -57,7 +60,8 @@ import {MatListModule} from '@angular/material/list';
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule, 
   ],
   providers: [ServiceService,UserService,TokenInterceptorService,AuthGuard],
   bootstrap: [AppComponent]
