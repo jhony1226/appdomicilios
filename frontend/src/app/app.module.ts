@@ -14,6 +14,7 @@ import { RegisterUserComponent } from './user/register-user/register-user.compon
 import { ListUsersComponent } from './user/list-users/list-users.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 import {ServiceService} from'./services/service.service';
 import { UserService } from './services/user.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -62,6 +63,8 @@ import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
     MatToolbarModule,
     MatListModule,
     MatMenuModule, 
+    MatCardModule,
+    MatFormFieldModule,
   ],
   providers: [ServiceService,UserService,TokenInterceptorService,AuthGuard],
   bootstrap: [AppComponent]

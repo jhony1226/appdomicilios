@@ -17,7 +17,7 @@ export default (app: Router) => {
       //inyectar dependencia a niverl de variable
       const userService = Container.get(UserService);
       const users = await userService.getUsers();
-      return res.json(users).status(200);
+      return res.json({users:users}).status(200);
     } catch (error) {
       res.status(500).end();
     }
