@@ -42,28 +42,29 @@
         <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="list-services" >
-        <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
+        <mat-icon   mat-list-icon>work</mat-icon>
         <p matLine >List Service</p>
         </a>
         <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="register-servicev" >
-        <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
+        <mat-icon   mat-list-icon>work</mat-icon>
         <p matLine >Register service</p>
         </a>
         <mat-divider></mat-divider> 
         <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="update-service" >
-        <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
+        <mat-icon   mat-list-icon>work</mat-icon>
         <p matLine >List Domiciliario</p>
         </a>
-         
+        <mat-divider></mat-divider> 
         <!--usuario-->
         <a mat-list-item
-        routerLink="list-services" >
-        <mat-icon id="cuatro" mat-list-icon>work</mat-icon>
-        <p matLine >Listar Usuarios</p>
+        (click)="toggleActive($event)"
+        routerLink="list-users" >
+        <mat-icon   mat-list-icon>work</mat-icon>
+        <p matLine>Listar Usuarios</p>
         </a>
         
       </mat-nav-list>
