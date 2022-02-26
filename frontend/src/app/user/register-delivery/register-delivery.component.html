@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Domiciliario</h1>
+    <ng-container matColumnDef="Name">
+      <input
+        [(ngModel)]="registerDate.name"
+        matInput
+        placeholder="Nombre"
+        required
+      />
+    </ng-container>
+    <ng-container matColumnDef="Email">
+      <input
+        [(ngModel)]="registerDate.email"
+        matInput
+        placeholder="Correo"
+        required
+      />
+    </ng-container>
+    <ng-container matColumnDef="Phone">
+      <input
+        [(ngModel)]="registerDate.phone"
+        matInput
+        placeholder="Celular"
+        required
+      />
+    </ng-container>
+    <ng-container matColumnDef="Password">
+      <input
+        type="password"
+        [(ngModel)]="registerDate.password"
+        matInput
+        placeholder="Contraseña"
+        required
+      />
+    </ng-container>
+
+    <button (click)="saveUser()" class="button" mat-raised-button>
+      Registrar
+    </button>
+    
+  </div>

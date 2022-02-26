@@ -31,10 +31,13 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list'; 
-import { MatMenuModule } from '@angular/material/menu';
-import {MatFormFieldModule,} from '@angular/material/form-field';  
+import { MatMenuModule } from '@angular/material/menu';  
 import {MatInputModule} from '@angular/material/input';
    
+import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
+import { RegisterDeliveryComponent } from './user/register-delivery/register-delivery.component';
+import { UpdateDeliveryComponent } from './user/update-delivery/update-delivery.component';
+
 @NgModule({
 
   declarations: [
@@ -48,7 +51,9 @@ import {MatInputModule} from '@angular/material/input';
     RegisterUserComponent,
     ListUsersComponent,
     UpdateUserComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterDeliveryComponent,
+    UpdateDeliveryComponent
   ],
   imports: [
     BrowserModule,

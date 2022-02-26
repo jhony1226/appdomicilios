@@ -58,15 +58,23 @@
         <mat-icon   mat-list-icon>work</mat-icon>
         <p matLine >List Domiciliario</p>
         </a>
-         
-        <!--usuario-->
-        <a mat-list-item 
+      
+        <!--Cliente-->
+        <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="list-users" >
         <mat-icon   mat-list-icon>work</mat-icon>
         <p matLine>Listar Usuarios</p>
         </a>
-        
+        <mat-divider></mat-divider> 
+        <!--Domiciliario-->
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="register-user" >
+        <mat-icon   mat-list-icon>work</mat-icon>
+        <p matLine>Registar Cliente</p>
+        </a>
+        <mat-divider></mat-divider>
       </mat-nav-list>
       <div class="position">
         <app-footer> </app-footer> 

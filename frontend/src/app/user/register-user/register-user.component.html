@@ -1,8 +1,7 @@
-      
-        
-        
+          
           <div class="container">
-            <ng-container matColumnDef="Domiciliario">
+            <h1>Cliente</h1>
+            <ng-container matColumnDef="Name">
               <input
                 [(ngModel)]="registerDate.name"
                 matInput
@@ -10,33 +9,34 @@
                 required
               />
             </ng-container>
-            <ng-container matColumnDef="Domiciliario">
+            <ng-container matColumnDef="Email">
               <input
-                [(ngModel)]="registerDate.name"
+                [(ngModel)]="registerDate.email"
                 matInput
                 placeholder="Correo"
                 required
               />
             </ng-container>
-            <ng-container matColumnDef="Domiciliario">
+            <ng-container matColumnDef="Phone">
               <input
-                [(ngModel)]="registerDate.name"
+                [(ngModel)]="registerDate.phone"
                 matInput
                 placeholder="Celular"
                 required
               />
             </ng-container>
-            <ng-container matColumnDef="Domiciliario">
+            <ng-container matColumnDef="Password">
               <input
-                [(ngModel)]="registerDate.name"
+                type="password"
+                [(ngModel)]="registerDate.password"
                 matInput
-                placeholder="Task Name"
+                placeholder="Contraseña"
                 required
               />
             </ng-container>
 
-            <button (click)="saveTask()" class="button" mat-raised-button>
-              Create
+            <button (click)="saveUser()" class="button" mat-raised-button>
+              Registrar
             </button>
             
           </div>
