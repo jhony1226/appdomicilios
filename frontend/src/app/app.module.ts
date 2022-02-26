@@ -32,8 +32,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list'; 
 import { MatMenuModule } from '@angular/material/menu';
-import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
-
+import {MatFormFieldModule,} from '@angular/material/form-field';  
+import {MatInputModule} from '@angular/material/input';
+   
 @NgModule({
 
   declarations: [
@@ -62,9 +63,11 @@ import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    MatMenuModule, 
+    MatMenuModule,
     MatCardModule,
     MatFormFieldModule,
+    MatInputModule,
+    
   ],
   providers: [ServiceService,UserService,TokenInterceptorService,AuthGuard],
   bootstrap: [AppComponent]
