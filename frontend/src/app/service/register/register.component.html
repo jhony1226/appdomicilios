@@ -6,43 +6,75 @@
       <div class="container"> 
         <div class="form-row">
           <div class="col-md-4 mb-3"> 
-              <mat-form-field class="mat-form" appearance="legacy">
-                  <mat-label>Nombre Cliente</mat-label> 
-                  <input matInput placeholder="Evniar a:" />
-                </mat-form-field>
+            <mat-form-field  class="ancho" appearance="outline">
+              <mat-label>Nombre Cliente</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Nombre:"
+                  required
+                />
+            </mat-form-field> 
           </div>
           
-           <div class="col-md-2 mb-3">
-              <mat-form-field class="mat-form" appearance="legacy">
-                  <mat-label>Direccion Envio</mat-label>
-                  <input matInput placeholder="Evniar a:" />
-                </mat-form-field>
+           <div class="col-md-4 mb-3">
+            <mat-form-field  class="ancho" appearance="outline">
+              <mat-label>Direccion envio</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Evniar a:"
+                  required
+                />
+            </mat-form-field> 
           </div>
           
-          <div class="col-md-3 mb-3">
-              <mat-form-field class="mat-form" appearance="legacy">
-                  <mat-label>Direccion destino</mat-label>
-                  <input matInput placeholder="Destino" />
-                </mat-form-field>
+          <div class="col-md-4 mb-3">
+            <mat-form-field  appearance="outline">
+              <mat-label>Direccicon destino</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Entregar a:"
+                  required
+                />
+            </mat-form-field> 
           </div> 
         </div>
+        
         <div class="form-row">
           <div class="col-md-4 mb-3"> 
-              <mat-form-field class="mat-form" appearance="legacy">
-                  <mat-label>Nombre Cliente</mat-label> 
-                  <input matInput placeholder="Evniar a:" />
-                </mat-form-field>
+            <mat-form-field  appearance="outline">
+              <mat-label>Nombre Cliente</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Evniar a:"
+                  required
+                />
+            </mat-form-field> 
+              
           </div> 
           <div class="col-md-3 mb-3">
-            <mat-form-field class="mat-form" appearance="legacy">
-                <mat-label>Precio</mat-label>
-                <input matInput placeholder="Placeholder" />
-              </mat-form-field>
+            <mat-form-field  appearance="outline">
+              <mat-label>Nombre Cliente</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Evniar a:"
+                  required
+                />
+            </mat-form-field> 
         </div> 
         </div>
         <div class="form-row"> 
           <div class=" col-md-4 ">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>Observaciones</mat-label>
               <textarea matInput placeholder="Placeholder"></textarea> 
             </mat-form-field> 

@@ -1,47 +1,45 @@
-          
-          <div class="container">
-            <h1>Cliente</h1>
-            <ng-container matColumnDef="Name">
-              <input
-                [(ngModel)]="registerDate.name"
-                matInput
-                placeholder="Nombre"
-                required
-              />
-            </ng-container>
-            <ng-container matColumnDef="Email">
-              <input
-                [(ngModel)]="registerDate.email"
-                matInput
-                placeholder="Correo"
-                required
-              />
-            </ng-container>
-            <ng-container matColumnDef="Phone">
-              <input
-                [(ngModel)]="registerDate.phone"
-                matInput
-                placeholder="Celular"
-                required
-              />
-            </ng-container>
-            <ng-container matColumnDef="Password">
-              <input
-                type="password"
-                [(ngModel)]="registerDate.password"
-                matInput
-                placeholder="Contraseña"
-                required
-              />
-            </ng-container>
-
-            <button (click)="saveUser()" class="button" mat-raised-button>
-              Registrar
-            </button>
-            
-          </div>
-        
-        
+<div class="body">
+  <div class="login mat-elevation-z8">
+    <div class="container">
+      <mat-card-title>Nuevo cliente</mat-card-title>
+      <br>
       
-    
-  
+      <mat-form-field   appearance="outline">
+        <mat-label>Nombre Clientte</mat-label>
+        <input
+          [(ngModel)]="registerDate.name"
+          matInput
+          placeholder="Nombre"
+          required
+        />
+      </mat-form-field>
+
+
+      <mat-form-field   appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          [(ngModel)]="registerDate.email"
+          matInput
+          type="email"
+          placeholder="Correo"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Celular</mat-label>
+        <input
+          [(ngModel)]="registerDate.phone"
+          matInput
+          type="number"
+          placeholder="Celular"
+          required
+        />
+      </mat-form-field>
+       
+
+      <button (click)="saveUser()" class="button" mat-raised-button>
+        Registrar
+      </button>
+    </div>
+  </div>
+</div>
