@@ -32,7 +32,7 @@
   </mat-toolbar>
 
   <mat-sidenav-container class=" example-sidenav-container" >
-    <mat-sidenav class="mat-elevation-z8" opened="true"
+    <mat-sidenav class=" mat-elevation-z8" opened="true"
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
@@ -47,7 +47,7 @@
         </a>
         <a mat-list-item
         (click)="toggleActive($event)"
-        routerLink="register-servicev" >
+        routerLink="registerService" >
         <mat-icon   mat-list-icon>work</mat-icon>
         <p matLine >Register service</p>
         </a>
@@ -58,7 +58,7 @@
         <mat-icon   mat-list-icon>work</mat-icon>
         <p matLine >List Domiciliario</p>
         </a>
-        <mat-divider></mat-divider> 
+      
         <!--Cliente-->
         <a mat-list-item
         (click)="toggleActive($event)"
@@ -76,10 +76,14 @@
         </a>
         <mat-divider></mat-divider>
       </mat-nav-list>
-    </mat-sidenav>
-    <div id="tres" class="example-sidenav-content">
+      <div class="position">
+        <app-footer> </app-footer> 
+      </div>
+    </mat-sidenav> 
+    <div >
       <router-outlet></router-outlet> 
+       
     </div>
-     
-  </mat-sidenav-container>
+   
+  </mat-sidenav-container> 
 </div>

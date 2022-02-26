@@ -1,1 +1,87 @@
-<p>register works!</p>
+<div class="bgComponent">
+  <div class="form">
+    <mat-card class="card">
+      <div class="back" routerLink="home"><mat-icon>backspace</mat-icon></div>
+      <mat-card-title>Nuevo Servicio</mat-card-title>
+      <div class="container"> 
+        <div class="form-row">
+          <div class="col-md-4 mb-3"> 
+            <mat-form-field  class="ancho" appearance="outline">
+              <mat-label>Nombre Cliente</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Nombre:"
+                  required
+                />
+            </mat-form-field> 
+          </div>
+          
+           <div class="col-md-4 mb-3">
+            <mat-form-field  class="ancho" appearance="outline">
+              <mat-label>Direccion envio</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Evniar a:"
+                  required
+                />
+            </mat-form-field> 
+          </div>
+          
+          <div class="col-md-4 mb-3">
+            <mat-form-field  appearance="outline">
+              <mat-label>Direccicon destino</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Entregar a:"
+                  required
+                />
+            </mat-form-field> 
+          </div> 
+        </div>
+        
+        <div class="form-row">
+          <div class="col-md-4 mb-3"> 
+            <mat-form-field  appearance="outline">
+              <mat-label>Nombre Cliente</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Evniar a:"
+                  required
+                />
+            </mat-form-field> 
+              
+          </div> 
+          <div class="col-md-3 mb-3">
+            <mat-form-field  appearance="outline">
+              <mat-label>Nombre Cliente</mat-label> 
+              <input
+                  [(ngModel)]="registerData.nombre"
+                  type="password"
+                  matInput
+                  placeholder="Evniar a:"
+                  required
+                />
+            </mat-form-field> 
+        </div> 
+        </div>
+        <div class="form-row"> 
+          <div class=" col-md-4 ">
+            <mat-form-field appearance="outline">
+              <mat-label>Observaciones</mat-label>
+              <textarea matInput placeholder="Placeholder"></textarea> 
+            </mat-form-field> 
+          </div>
+         
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

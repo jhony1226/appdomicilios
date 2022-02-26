@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor() { }
+  registerData: any; 
+  message: string = '';
+  constructor() { this.registerData = {};}
 
   ngOnInit(): void {
   }

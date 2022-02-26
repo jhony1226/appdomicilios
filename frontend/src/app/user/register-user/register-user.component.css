@@ -1,24 +1,53 @@
 .container{
     display: flex;
-    flex-direction:column;
-    width: 50%;
-    
+    flex-direction:column; 
 }
 
 .button{
     width: 100%;
-    background-color:  rgb(88, 100, 102);
+    background-color:  #121313;
     color:white;
 }
 
-.card{
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-}
+ 
 .form{
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 100px 16px;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0%; 
+}
+
+.login{
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+}
+.ancho{
+    width: 80%;
+}
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0%; 
+}
+
+.login{
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+}
+.ancho{
+    width: 80%;
 }

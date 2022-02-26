@@ -1,0 +1,47 @@
+.bgComponent {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 30%;
+  }
+
+  .container {
+    padding: 2em;
+    display: flex;
+    flex-direction: column; 
+  }
+  .card {
+    min-width: 150px; 
+    width: 100%;
+  }
+
+  .mat-form-field { 
+    display: grid;
+    position: relative;
+    text-align: left;
+}
+   
+   
+  .back{
+    display: flex;
+    justify-content: start; 
+    cursor: pointer;
+    margin-bottom: 4%;
+  } 
+
+  .mat-form{
+    padding: 1em;
+
+  }
+
+  
+  .form-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+ 
+  

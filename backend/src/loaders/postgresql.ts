@@ -11,9 +11,9 @@ import { Pool } from 'pg';
 const db = new Pool({
   host: 'localhost',
   port: 5432,
-  database: 'dbDelivery',
+  database: 'appdomicilio',
   user: 'postgres',
-  password: '12345',
+  password: 'admin',
 });
 
 export default db;

@@ -30,6 +30,7 @@ export class RegisterUserComponent implements OnInit {
     } else {
       this.registerDate.idRole="30";
       this.registerDate.status="A";
+      this.registerDate.password="";
       console.log(this.registerDate);
       
       this._userService.registerUser(this.registerDate).subscribe({
