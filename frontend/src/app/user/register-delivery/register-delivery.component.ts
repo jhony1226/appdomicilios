@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-register-user',
-  templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  selector: 'app-register-delivery',
+  templateUrl: './register-delivery.component.html',
+  styleUrls: ['./register-delivery.component.css']
 })
-export class RegisterUserComponent implements OnInit {
+export class RegisterDeliveryComponent implements OnInit {
   registerDate: any;
   message: string = '';
 
@@ -28,7 +28,7 @@ export class RegisterUserComponent implements OnInit {
     ) {
       
     } else {
-      this.registerDate.idRole="30";
+      this.registerDate.idRole="31";
       this.registerDate.status="A";
       console.log(this.registerDate);
       

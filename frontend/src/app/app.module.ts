@@ -33,6 +33,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list'; 
 import { MatMenuModule } from '@angular/material/menu';
 import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
+import { RegisterDeliveryComponent } from './user/register-delivery/register-delivery.component';
+import { UpdateDeliveryComponent } from './user/update-delivery/update-delivery.component';
 
 @NgModule({
 
@@ -47,7 +49,9 @@ import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
     RegisterUserComponent,
     ListUsersComponent,
     UpdateUserComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterDeliveryComponent,
+    UpdateDeliveryComponent
   ],
   imports: [
     BrowserModule,
