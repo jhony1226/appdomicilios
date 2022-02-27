@@ -1,14 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
 import { Service } from 'src/app/interfaces/servicio';
 
 import { ServiceService } from 'src/app/services/service.service';
-
-
-
-
+ 
 @Component({
   selector: 'app-list-services',
   templateUrl: './list-services.component.html',
@@ -19,7 +16,9 @@ import { ServiceService } from 'src/app/services/service.service';
 export class ListServicesComponent implements OnInit { 
   displayedColumns: string[] = ['Domiciliario', 'Destino','Cliente', 'Estado', 'Precio', 'Fecha' ,'Accion'];
   dataSource = new MatTableDataSource<any>();
-  servicesData:any;
+  servicesData:any; 
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   constructor(
     private _serviceService:ServiceService,
@@ -40,7 +39,7 @@ export class ListServicesComponent implements OnInit {
         
         // this.isPo = v.verifyPo;
         this.dataSource = new MatTableDataSource(this.servicesData);
-        //this.dataSource.paginator = this.paginator;
+         this.dataSource.paginator = this.paginator;
       },
       error: (e) => {
         //this.message = e.error.message;
@@ -49,6 +48,14 @@ export class ListServicesComponent implements OnInit {
     });  
   }
   deleteUserTeam = async (team: any) => {
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
    
 

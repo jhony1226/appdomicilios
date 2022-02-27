@@ -1,85 +1,113 @@
 <div class="bgComponent">
   <div class="form">
     <mat-card class="card">
-      <div class="back" routerLink="home"><mat-icon>backspace</mat-icon></div>
-      <mat-card-title>Nuevo Servicio</mat-card-title>
-      <div class="container"> 
-        <div class="form-row">
-          <div class="col-md-4 mb-3"> 
-            <mat-form-field  class="ancho" appearance="outline">
-              <mat-label>Nombre Cliente</mat-label> 
+      <div class="container">
+        <h1>Nuevo Servico</h1>
+        <br />
+        <button
+          class="ancho"
+          style="width: 200px"
+          mat-raised-button
+          (click)="openDialogClient()"
+        >
+          Seleccionar cliente
+        </button>
+        <br />
+        <div *ngIf="cliente" class="form-row">
+          <div class="col-md-4 mb-2">
+            <mat-form-field class="ancho bold" appearance="fill">
               <input
-                  [(ngModel)]="registerData.nombre"
-                  type="password"
-                  matInput
-                  placeholder="Nombre:"
-                  required
-                />
-            </mat-form-field> 
+                [(ngModel)]="registerData.nombre"
+                matInput
+                disabled
+                placeholder="{{ nombre }}"
+                required
+              />
+              <mat-hint>Nombre cliente</mat-hint>
+            </mat-form-field>
           </div>
-          
-           <div class="col-md-4 mb-3">
-            <mat-form-field  class="ancho" appearance="outline">
-              <mat-label>Direccion envio</mat-label> 
+          <div class="col-md-4 mb-2">
+            <mat-form-field class="ancho bold" appearance="fill">
               <input
-                  [(ngModel)]="registerData.nombre"
-                  type="password"
-                  matInput
-                  placeholder="Evniar a:"
-                  required
-                />
-            </mat-form-field> 
+                disabled
+                [(ngModel)]="registerData.celular"
+                matInput
+                placeholder="{{ celular }}"
+                required
+              />
+              <mat-hint>Celular</mat-hint> </mat-form-field
+            ><mat-divider></mat-divider>
           </div>
-          
-          <div class="col-md-4 mb-3">
-            <mat-form-field  appearance="outline">
-              <mat-label>Direccicon destino</mat-label> 
-              <input
-                  [(ngModel)]="registerData.nombre"
-                  type="password"
-                  matInput
-                  placeholder="Entregar a:"
-                  required
-                />
-            </mat-form-field> 
-          </div> 
         </div>
-        
+        <br />
         <div class="form-row">
-          <div class="col-md-4 mb-3"> 
-            <mat-form-field  appearance="outline">
-              <mat-label>Nombre Cliente</mat-label> 
+          <div class="col-md-4 md-3">
+            <mat-form-field class="ancho" appearance="outline">
+              <mat-label>Direccion origen</mat-label>
               <input
-                  [(ngModel)]="registerData.nombre"
-                  type="password"
-                  matInput
-                  placeholder="Evniar a:"
-                  required
-                />
-            </mat-form-field> 
-              
-          </div> 
-          <div class="col-md-3 mb-3">
-            <mat-form-field  appearance="outline">
-              <mat-label>Nombre Cliente</mat-label> 
-              <input
-                  [(ngModel)]="registerData.nombre"
-                  type="password"
-                  matInput
-                  placeholder="Evniar a:"
-                  required
-                />
-            </mat-form-field> 
-        </div> 
-        </div>
-        <div class="form-row"> 
-          <div class=" col-md-4 ">
-            <mat-form-field appearance="outline">
-              <mat-label>Observaciones</mat-label>
-              <textarea matInput placeholder="Placeholder"></textarea> 
-            </mat-form-field> 
+                [(ngModel)]="registerData.source"
+                matInput
+                placeholder="Remitente"
+                required
+              />
+            </mat-form-field>
           </div>
-         
+          <div class="col-md-4 md-3">
+            <mat-form-field class="ancho" appearance="outline">
+              <mat-label>Direccion envio</mat-label>
+              <input
+                [(ngModel)]="registerData.destination"
+                matInput
+                placeholder="Destino"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 md-2">
+            <mat-form-field class="ancho" appearance="outline">
+              <mat-label>Precio del servicio</mat-label>
+              <input
+                [(ngModel)]="registerData.price"
+                matInput
+                placeholder="Costo"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <button
+          class="ancho"
+          style="width: 200px"
+          mat-raised-button
+          (click)="openDialogDom()"
+        >
+          Asignar Domiciliario
+        </button>
+        <div *ngIf="domicilio" class="col-md-3 md-2">
+          <mat-form-field
+            class="ancho bold"
+            style="font-weight: bold"
+            appearance="fill"
+          >
+            <input
+              [(ngModel)]="registerData.nombre"
+              matInput
+              disabled
+              title="{{ nombreDom }}"
+              placeholder="{{ nombreDom }}"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <mat-form-field class="ancho" appearance="outline">
+          <mat-label>Observaciones</mat-label>
+          <textarea matInput placeholder="Placeholder"></textarea>
+        </mat-form-field>
+        <div class="center">
+          <button (click)="save()" class="button" mat-raised-button>
+            Guardar
+          </button>
         </div>
       </div>
     </mat-card>

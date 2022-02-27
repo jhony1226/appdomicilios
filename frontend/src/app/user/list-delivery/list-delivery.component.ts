@@ -1,18 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
-import { Service } from 'src/app/interfaces/servicio';
-
-import { ServiceService } from 'src/app/services/service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-list-users',
-  templateUrl: './list-users.component.html',
-  styleUrls: ['./list-users.component.css'],
+  selector: 'app-list-delivery',
+  templateUrl: './list-delivery.component.html',
+  styleUrls: ['./list-delivery.component.css']
 })
-export class ListUsersComponent implements OnInit {
+export class ListDeliveryComponent implements OnInit {
   displayedColumns: string[] = ['Rol', 'Nombre', 'Email', 'Estado'];
   dataSource = new MatTableDataSource<any>();
   usersData: any;
@@ -51,4 +48,5 @@ export class ListUsersComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
 }

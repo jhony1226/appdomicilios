@@ -1,6 +1,7 @@
 .container{
     display: flex;
     flex-direction:column; 
+    justify-content: center;
 }
 
 .button{
@@ -20,8 +21,8 @@
 .body{
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 0%; 
+    align-items: center; 
+    margin-top: 50px;
 }
 
 .login{
