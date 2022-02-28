@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./list-users.component.css'],
 })
 export class ListUsersComponent implements OnInit {
-  displayedColumns: string[] = ['Rol', 'Nombre', 'Email', 'Estado'];
+  displayedColumns: string[] = ['Id', 'Nombre', 'Email'];
   dataSource = new MatTableDataSource<any>();
   usersData: any;
   @ViewChild(MatPaginator)

@@ -1,0 +1,54 @@
+.container{
+    display: flex;
+    flex-direction:column; 
+    justify-content: center;
+}
+
+.button{
+    width: 100%;
+    background-color:  #121313;
+    color:white;
+}
+
+ 
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 16px;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 50px;
+}
+
+.login{
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+}
+.ancho{
+    width: 80%;
+}
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0%; 
+}
+
+.login{
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+}
+.ancho{
+    width: 80%;
+}

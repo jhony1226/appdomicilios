@@ -5,6 +5,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { ServiceService } from 'src/app/services/service.service';
 import { UserService } from 'src/app/services/user.service';
 import { ListServicesComponent } from '../list-services/list-services.component';
 import { ModalDomiciliarioComponent } from '../modal-domiciliario/modal-domiciliario.component';
@@ -29,9 +30,12 @@ export class RegisterComponent implements OnInit {
   registerData: any;
   nombre: string=''; 
   nombreDom: string='';
+  idCliente:number=0; 
+  idDom: number=0; 
   celular:string='';
-  message: string = '';
-  constructor(public dialog: MatDialog) {
+  message: string = ''; 
+  constructor(public dialog: MatDialog,
+    private _serviceService:ServiceService) {
     this.registerData = {};
   }
 
@@ -47,6 +51,7 @@ export class RegisterComponent implements OnInit {
       this.domicilio = result;
       console.log( this.domicilio.name);  
       this.nombreDom=this.domicilio.name
+      this.idDom=this.domicilio.id
      });
   }
   openDialogClient(): void {
@@ -59,11 +64,36 @@ export class RegisterComponent implements OnInit {
      this.cliente = result; 
      this.nombre=this.cliente.name
      this.celular=this.cliente.phone
+     this.idCliente=this.cliente.id
     }); 
   }
 
   save(): void{
-    
+    if (
+      !this.registerData.name ||
+      !this.registerData.email
+    ){
+      this.registerData.idCliente=this.idCliente;
+      this.registerData.idDeliv=this.idDom;
+      this.registerData.idStatus=1;
+      ;
+      console.log(this.domicilio);
+      
+      console.log(this.registerData);
+      
+      this._serviceService.registerService(this.registerData).subscribe({
+        next:(v)=>{   
+          //this._router.navigate(['/home/list-users'])
+          this.registerData={}
+          console.log("registrado");
+          console.log(v);   
+        },
+        error:(e)=>{ 
+          console.log(e.error.message);
+          console.log("error"); 
+         }
+      });
+    }
   }
 
 }

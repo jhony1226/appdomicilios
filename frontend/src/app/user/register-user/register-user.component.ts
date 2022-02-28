@@ -30,24 +30,19 @@ export class RegisterUserComponent implements OnInit {
     } else {
       this.registerDate.idRole="30";
       this.registerDate.status="A";
-      this.registerDate.password="";
+      this.registerDate.password="1234";
       console.log(this.registerDate);
       
       this._userService.registerUser(this.registerDate).subscribe({
-        next:(v)=>{  
-          
+        next:(v)=>{   
           //this._router.navigate(['/home/list-users'])
+          this.registerDate={}
           console.log("registrado");
-          console.log(v);
-          
-          
-          
+          console.log(v);   
         },
         error:(e)=>{ 
           console.log(e.error.message);
-          console.log("error");
-          
-          
+          console.log("error"); 
          }
       });
     }

@@ -24,7 +24,8 @@ export class RegisterDeliveryComponent implements OnInit {
   saveUser():void{
     if (
       !this.registerDate.name ||
-      !this.registerDate.email
+      !this.registerDate.email ||
+      !this.registerDate.password
     ) {
       
     } else {
@@ -36,8 +37,10 @@ export class RegisterDeliveryComponent implements OnInit {
         next:(v)=>{  
           
           //this._router.navigate(['/home/list-users'])
+          this.registerDate={}
           console.log("registrado");
           console.log(v);
+
           
           
           

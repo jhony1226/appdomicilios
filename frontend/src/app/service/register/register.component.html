@@ -16,8 +16,7 @@
         <div *ngIf="cliente" class="form-row">
           <div class="col-md-4 mb-2">
             <mat-form-field class="ancho bold" appearance="fill">
-              <input
-                [(ngModel)]="registerData.nombre"
+              <input 
                 matInput
                 disabled
                 placeholder="{{ nombre }}"
@@ -26,11 +25,10 @@
               <mat-hint>Nombre cliente</mat-hint>
             </mat-form-field>
           </div>
-          <div class="col-md-4 mb-2">
+          <div class="col-md-4 mb-2"> 
             <mat-form-field class="ancho bold" appearance="fill">
               <input
-                disabled
-                [(ngModel)]="registerData.celular"
+                disabled 
                 matInput
                 placeholder="{{ celular }}"
                 required
@@ -47,8 +45,7 @@
               <input
                 [(ngModel)]="registerData.source"
                 matInput
-                placeholder="Remitente"
-                required
+                placeholder="Remitente" 
               />
             </mat-form-field>
           </div>
@@ -58,8 +55,7 @@
               <input
                 [(ngModel)]="registerData.destination"
                 matInput
-                placeholder="Destino"
-                required
+                placeholder="Destino" 
               />
             </mat-form-field>
           </div>
@@ -70,7 +66,7 @@
                 [(ngModel)]="registerData.price"
                 matInput
                 placeholder="Costo"
-                required
+                type="number" 
               />
             </mat-form-field>
           </div>
@@ -90,19 +86,20 @@
             style="font-weight: bold"
             appearance="fill"
           >
-            <input
-              [(ngModel)]="registerData.nombre"
+            <input 
               matInput
               disabled
               title="{{ nombreDom }}"
-              placeholder="{{ nombreDom }}"
-              required
+              placeholder="{{ nombreDom }}" 
             />
           </mat-form-field>
         </div>
         <mat-form-field class="ancho" appearance="outline">
           <mat-label>Observaciones</mat-label>
-          <textarea matInput placeholder="Placeholder"></textarea>
+          <textarea matInput 
+          [(ngModel)]="registerData.observation"
+          placeholder="Placeholder">
+        </textarea>
         </mat-form-field>
         <div class="center">
           <button (click)="save()" class="button" mat-raised-button>
