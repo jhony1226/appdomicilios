@@ -5,9 +5,11 @@ import { LoginComponent } from './home/login/login.component';
 import { ListServicesComponent } from './service/list-services/list-services.component';
 import { RegisterComponent } from './service/register/register.component';
 import { UpdateServiceComponent } from './service/update-service/update-service.component';
+import { ListDeliveryComponent } from './user/list-delivery/list-delivery.component';
 import { ListUsersComponent } from './user/list-users/list-users.component';
-import { RegisterUserComponent } from './user/register-user/register-user.component';
 import { RegisterDeliveryComponent } from './user/register-delivery/register-delivery.component';
+import { RegisterUserComponent } from './user/register-user/register-user.component';
+import { UpdateDeliveryComponent } from './user/update-delivery/update-delivery.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
 
 const routes: Routes = [

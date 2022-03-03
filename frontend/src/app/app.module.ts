@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './home/header/header.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { LoginComponent } from './home/login/login.component';
-import { RegisterComponent } from './service/register/register.component';
+import { DialogOverviewExampleDialog, RegisterComponent } from './service/register/register.component';
 import { ListServicesComponent } from './service/list-services/list-services.component';
 import { UpdateServiceComponent } from './service/update-service/update-service.component';
 import { RegisterUserComponent } from './user/register-user/register-user.component';
@@ -33,10 +33,17 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list'; 
 import { MatMenuModule } from '@angular/material/menu';  
 import {MatInputModule} from '@angular/material/input';
-   
+import { MatDialogModule } from '@angular/material/dialog';   
+
 import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import { RegisterDeliveryComponent } from './user/register-delivery/register-delivery.component';
 import { UpdateDeliveryComponent } from './user/update-delivery/update-delivery.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ModalDomiciliarioComponent } from './service/modal-domiciliario/modal-domiciliario.component';
+import { ListDeliveryComponent } from './user/list-delivery/list-delivery.component';
+
+ 
+
 
 @NgModule({
 
@@ -53,7 +60,10 @@ import { UpdateDeliveryComponent } from './user/update-delivery/update-delivery.
     UpdateUserComponent,
     DashboardComponent,
     RegisterDeliveryComponent,
-    UpdateDeliveryComponent
+    UpdateDeliveryComponent,
+    DialogOverviewExampleDialog,
+    ModalDomiciliarioComponent,
+    ListDeliveryComponent 
   ],
   imports: [
     BrowserModule,
@@ -72,6 +82,8 @@ import { UpdateDeliveryComponent } from './user/update-delivery/update-delivery.
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    MatPaginatorModule,
     
   ],
   providers: [ServiceService,UserService,TokenInterceptorService,AuthGuard],

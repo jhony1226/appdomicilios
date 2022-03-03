@@ -31,7 +31,7 @@
       </div> 
   </mat-toolbar>
 
-  <mat-sidenav-container class=" example-sidenav-container" >
+  <mat-sidenav-container class="mat-drawer-content1 example-sidenav-container" >
     <mat-sidenav class=" mat-elevation-z8" opened="true"
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
@@ -42,37 +42,42 @@
         <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="list-services" >
-        <mat-icon   mat-list-icon>work</mat-icon>
-        <p matLine >List Service</p>
+        <mat-icon   mat-list-icon>room_service</mat-icon>
+        <p matLine >Servicios</p>
         </a>
         <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="registerService" >
-        <mat-icon   mat-list-icon>work</mat-icon>
-        <p matLine >Register service</p>
+        <mat-icon   mat-list-icon>add_circle</mat-icon>
+        <p matLine >Nuevo Servicio</p>
         </a>
         <mat-divider></mat-divider> 
         <a mat-list-item
         (click)="toggleActive($event)"
-        routerLink="update-service" >
-        <mat-icon   mat-list-icon>work</mat-icon>
-        <p matLine >List Domiciliario</p>
+        routerLink="list-delivery" >
+        <mat-icon   mat-list-icon>delivery_dining</mat-icon>
+        <p matLine >Domiciliarios</p>
+        </a> 
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="register-delivery" >
+        <mat-icon   mat-list-icon>add_circle</mat-icon>
+        <p matLine >Registrar Domiciliario</p>
         </a>
-      
+        <mat-divider></mat-divider> 
         <!--Cliente-->
         <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="list-users" >
-        <mat-icon   mat-list-icon>work</mat-icon>
-        <p matLine>Listar Usuarios</p>
-        </a>
-        <mat-divider></mat-divider> 
+        <mat-icon   mat-list-icon>people</mat-icon>
+        <p matLine>Clientes</p>
+        </a> 
         <!--Domiciliario-->
         <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="register-user" >
-        <mat-icon   mat-list-icon>work</mat-icon>
-        <p matLine>Registar Cliente</p>
+        <mat-icon   mat-list-icon>add_circle</mat-icon>
+        <p matLine>Nuevo Cliente</p>
         </a>
         <mat-divider></mat-divider>
       </mat-nav-list>

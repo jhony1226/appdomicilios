@@ -17,4 +17,7 @@ export class ServiceService {
   listService(){
     return this._http.get<any>(this.env+'services/getServices/');
   }
+  registerService(service:any){
+    return this._http.post<any>(this.env+'services/registerService/',service);
+  }
 }
