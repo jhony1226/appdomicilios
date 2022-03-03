@@ -7,6 +7,7 @@ import { RegisterComponent } from './service/register/register.component';
 import { UpdateServiceComponent } from './service/update-service/update-service.component';
 import { ListUsersComponent } from './user/list-users/list-users.component';
 import { RegisterUserComponent } from './user/register-user/register-user.component';
+import { RegisterDeliveryComponent } from './user/register-delivery/register-delivery.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
         {path:'registerService',component:RegisterComponent}, 
       {path:'update-service',component:UpdateServiceComponent},
       {path:'register-user',component:RegisterUserComponent},
+      {path:'register-delivery',component:RegisterDeliveryComponent},
       {path:'list-users',component:ListUsersComponent},
       {path:'update-user',component:UpdateUserComponent}
     ]

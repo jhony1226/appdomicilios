@@ -31,6 +31,7 @@ export class RegisterUserComponent implements OnInit {
       this.registerDate.idRole="30";
       this.registerDate.status="A";
       this.registerDate.password="";
+      this.registerDate.phone=this.registerDate.phone.toString();
       console.log(this.registerDate);
       
       this._userService.registerUser(this.registerDate).subscribe({

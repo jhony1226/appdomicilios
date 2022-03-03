@@ -30,6 +30,7 @@ export class RegisterDeliveryComponent implements OnInit {
     } else {
       this.registerDate.idRole="31";
       this.registerDate.status="A";
+      this.registerDate.phone=this.registerDate.phone.toString();
       console.log(this.registerDate);
       
       this._userService.registerUser(this.registerDate).subscribe({
