@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+
+
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./list-delivery.component.css']
 })
 export class ListDeliveryComponent implements OnInit {
-  displayedColumns: string[] = ['Rol', 'Nombre', 'Email', 'Estado'];
+  displayedColumns: string[] = [ 'Nombre', 'Email', 'Estado'];
   dataSource = new MatTableDataSource<any>();
   usersData: any;
   @ViewChild(MatPaginator)
@@ -28,6 +30,17 @@ export class ListDeliveryComponent implements OnInit {
   ngOnInit(): void {
     this._userService.listDeliverys().subscribe({
       next: (v) => {
+        for(let i=0 ; i< v.users.length ; i++){
+          if(v.users[i].status=="I"){
+            console.log(v.users[i].status)
+            v.users[i].status="INACTIVO";
+            console.log(v.users[i].status)
+                       
+          }
+          else{
+            v.users[i].status="ACTIVO";
+          }
+        }
         this.usersData = v.users;
         console.log(v);
 
