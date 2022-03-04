@@ -41,9 +41,6 @@ export class RegisterDeliveryComponent implements OnInit {
           this.registerDate={}
           console.log("registrado");
           console.log(v);
-
-          
-          
           
         },
         error:(e)=>{ 

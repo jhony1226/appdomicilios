@@ -19,7 +19,16 @@ export class UserService {
   listUsers(){
     return this._http.get<any>(this.env+'user/getUsers/');
   }
+  listDeliverys(){
+    return this._http.get<any>(this.env+'user/getDeliverys/');
+  }
+  listClients(){
+    return this._http.get<any>(this.env+'user/getClients/');
+  }
   registerUser(user:any){
     return this._http.post<any>(this.env+ 'user/registerUser/',user);
+  }
+  updateUser(user:any,email:string){
+    return this._http.put<any>(this.env+ 'user/updateUser/'+email,user);
   }
 }

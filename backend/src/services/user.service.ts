@@ -15,6 +15,21 @@ export default class UserService {
       throw error;
     }
   }
+  public async getDeliverys(): Promise<UserOutput[]> {
+    try {
+      return await this.userInterface.getDeliverys();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  public async getClients(): Promise<UserOutput[]> {
+    try {
+      return await this.userInterface.getClients();
+    } catch (error) {
+      throw error;
+    }
+  }
   
   public async registerUser(user: UserInput): Promise<UserInput> {
     try {

@@ -29,7 +29,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._userService.listUsers().subscribe({
+    this._userService.listClients().subscribe({
       next: (v) => {
         this.usersData = v.users;
         console.log(v);

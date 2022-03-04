@@ -26,7 +26,7 @@ export class ListDeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._userService.listUsers().subscribe({
+    this._userService.listDeliverys().subscribe({
       next: (v) => {
         this.usersData = v.users;
         console.log(v);
