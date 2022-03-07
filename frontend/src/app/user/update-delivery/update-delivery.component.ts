@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { DialogData } from '../list-delivery/list-delivery.component';
 
 
 
@@ -13,16 +15,19 @@ export class UpdateDeliveryComponent implements OnInit {
   registerData: any;
   message: string = '';
   status: string = '';
-  email:string ='';
-
+  email:string =''; 
   constructor(
     private _userService: UserService,
     private _router: Router,
+    public dialogRef: MatDialogRef<UpdateDeliveryComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {
     this.registerData = {};
    }
 
   ngOnInit(): void {
+    this.registerData.name=this.data.domicilio.name
+    console.log(this.data.domicilio.name); 
   }
   upUser():void{
     if (

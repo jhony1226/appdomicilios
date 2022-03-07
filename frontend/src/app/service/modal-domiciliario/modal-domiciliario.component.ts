@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./modal-domiciliario.component.css']
 })
 export class ModalDomiciliarioComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'Nombre', 'Email', 'Estado','Seleccion'];
+  displayedColumns: string[] = [ 'Nombre', 'Email', 'Estado','Seleccion'];
   dataSource = new MatTableDataSource<any>();
   usersData:any; 
   @ViewChild(MatPaginator)
@@ -26,7 +26,7 @@ constructor(
   }
  
   ngOnInit(): void {
-    this._userService.listUsers().subscribe({
+    this._userService.listDeliverys().subscribe({
       next: (v) => {
         this.usersData = v.users;
         console.log(v);

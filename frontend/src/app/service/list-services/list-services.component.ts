@@ -14,7 +14,7 @@ import { ServiceService } from 'src/app/services/service.service';
 
  
 export class ListServicesComponent implements OnInit { 
-  displayedColumns: string[] = ['Domiciliario', 'Destino','Cliente', 'Estado', 'Precio', 'Fecha' ,'Accion'];
+  displayedColumns: string[] = ['Domiciliario', 'Destino','Cliente', 'Estado', 'Precio', 'Fecha' , 'Eliminar','Detalles', 'Actualizar'];
   dataSource = new MatTableDataSource<any>();
   servicesData:any; 
   @ViewChild(MatPaginator)

@@ -105,7 +105,7 @@ export class RegisterComponent implements OnInit {
   styleUrls: ['./register.component.css'],
 })
 export class DialogOverviewExampleDialog {
-  displayedColumns: string[] = ['Rol', 'Nombre', 'Email', 'Estado' ,'Seleccion'];
+  displayedColumns: string[] = [ 'Nombre', 'Email', 'Estado' ,'Seleccion'];
   dataSource = new MatTableDataSource<any>();
   usersData: any;
 
@@ -119,7 +119,7 @@ export class DialogOverviewExampleDialog {
   }
 
   ngOnInit(): void {
-    this._userService.listUsers().subscribe({
+    this._userService.listClients().subscribe({
       next: (v) => {
         this.usersData = v.users;
        // console.log(v);
