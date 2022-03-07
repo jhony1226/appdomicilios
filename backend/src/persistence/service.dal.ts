@@ -27,7 +27,8 @@ export default class ServicesDalService implements serviseRepository {
             text: 'select * from services',
           };
           const res = await db.query(query); 
-          return res.rows;
+          return res.rows; 
+          
         } catch (error) {
           Logger.error(`Error SQL => ${error}`);
       throw error;

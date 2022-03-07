@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { http } from 'winston';
 
 // Set the NODE_ENV to 'development' by default
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -11,7 +12,9 @@ if (envFound.error) {
 }
 
 export default {
+  
   port: process.env.PORT,
+  
   api: {
     prefix: '/api',
   },
