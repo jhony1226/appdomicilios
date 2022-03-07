@@ -33,7 +33,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list'; 
 import { MatMenuModule } from '@angular/material/menu';  
 import {MatInputModule} from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';   
+import { MatDialogModule } from '@angular/material/dialog'; 
+import {MatSelectModule} from '@angular/material/select';  
 
 import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import { RegisterDeliveryComponent } from './user/register-delivery/register-delivery.component';
@@ -84,7 +85,7 @@ import { ListDeliveryComponent } from './user/list-delivery/list-delivery.compon
     MatInputModule,
     MatDialogModule,
     MatPaginatorModule,
-    
+    MatSelectModule
   ],
   providers: [ServiceService,UserService,TokenInterceptorService,AuthGuard],
   bootstrap: [AppComponent]

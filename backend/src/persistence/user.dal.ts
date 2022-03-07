@@ -49,6 +49,34 @@ export default class UserDalService implements UserRepository {
     }
   }
 
+  async getDeliverys(): Promise<UserOutput[]> {
+    try { 
+      const query = {
+        text: 'select * from users where id_role=$1',
+        values:[31]
+      };
+      const res = await db.query(query);  
+      return res.rows;
+    } catch (error) {
+      throw'mensaje';
+    }
+  }
+
+  async getClients(): Promise<UserOutput[]> {
+    try { 
+      const query = {
+        text: 'select * from users where id_role=$1',
+        values:[30]
+      };
+           
+      
+      const res = await db.query(query);  
+      return res.rows;
+    } catch (error) {
+      throw'mensaje';
+    }
+  };
+
   async registerUser(user:UserInput):Promise<UserOutput>{
     const fecha= new Date();  
     const query={
@@ -109,7 +137,7 @@ export default class UserDalService implements UserRepository {
     }
   }
 
-  async finPhone(user:UserInput): Promise<UserOutput> {
+  async findPhone(user:UserInput): Promise<UserOutput> {
     try {  
       const query = {
         text: 'select * from users  where email=$1 AND id!=$2',

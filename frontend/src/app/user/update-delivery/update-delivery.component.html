@@ -1,1 +1,68 @@
-<p>update-delivery works!</p>
+<div class="body">
+    <div class="login mat-elevation-z8">
+      <div class="container">
+        <mat-card-title>Actualizar Domiciliario</mat-card-title>
+        <br>
+        
+        <mat-form-field   appearance="outline">
+          <mat-label>Nombre Domiciliario</mat-label>
+          <input
+            [(ngModel)]="registerData.name"
+            matInput
+            placeholder="Nombre"
+            required
+          />
+        </mat-form-field>
+  
+  
+        <mat-form-field   appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            [(ngModel)]="registerData.email"
+            matInput
+            type="email"
+            placeholder="Correo"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Celular</mat-label>
+          <input
+            [(ngModel)]="registerData.phone"
+            matInput
+            type="number"
+            placeholder="Celular"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            [(ngModel)]="registerData.password"
+            matInput
+            type="password"
+            placeholder="Password"
+            required
+          />
+        </mat-form-field>
+         
+        <mat-form-field appearance="fill">
+          <mat-label>Estado</mat-label>
+          <mat-select [(value)]="status">
+            <mat-option value="A">Activar</mat-option>
+            <mat-option value="I">Desactivar</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <p>You selected: {{status}}</p>        
+
+        <button (click)="upUser()" class="button" mat-raised-button>
+          Actualizar
+        </button>
+
+        
+        
+      </div>
+    </div>
+  </div>
+  

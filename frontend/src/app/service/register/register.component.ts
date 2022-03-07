@@ -54,6 +54,7 @@ export class RegisterComponent implements OnInit {
       this.idDom=this.domicilio.id
      });
   }
+  
   openDialogClient(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '100%',
@@ -97,6 +98,7 @@ export class RegisterComponent implements OnInit {
   }
 
 }
+
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',

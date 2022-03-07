@@ -30,6 +30,7 @@ export class RegisterUserComponent implements OnInit {
     } else {
       this.registerDate.idRole="30";
       this.registerDate.status="A";
+      this.registerDate.phone=this.registerDate.phone.toString();
       this.registerDate.password="1234";
       console.log(this.registerDate);
       

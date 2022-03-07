@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./list-users.component.css'],
 })
 export class ListUsersComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'Nombre', 'Email'];
+  displayedColumns: string[] = [ 'Nombre', 'Email','Telefono'];
   dataSource = new MatTableDataSource<any>();
   usersData: any;
   @ViewChild(MatPaginator)
@@ -29,7 +29,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._userService.listUsers().subscribe({
+    this._userService.listClients().subscribe({
       next: (v) => {
         this.usersData = v.users;
         console.log(v);

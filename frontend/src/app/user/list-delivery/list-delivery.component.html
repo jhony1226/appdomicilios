@@ -12,12 +12,7 @@
     </mat-form-field>
     <div class="container mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" > 
-        <!-- Position Column -->
-        <ng-container matColumnDef="Rol">
-          <th mat-header-cell *matHeaderCellDef>Rol</th>
-          <td mat-cell *matCellDef="let element">{{ element.id_role }}</td>
-        </ng-container>
-  
+        
         <!-- Name Column -->
         <ng-container matColumnDef="Nombre">
           <th mat-header-cell *matHeaderCellDef>Nombre</th>

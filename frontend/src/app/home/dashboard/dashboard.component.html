@@ -64,6 +64,14 @@
         <mat-icon   mat-list-icon>add_circle</mat-icon>
         <p matLine >Registrar Domiciliario</p>
         </a>
+      
+        <a mat-list-item
+        (click)="toggleActive($event)"
+        routerLink="update-delivery" >
+        <mat-icon   mat-list-icon>delivery_dining</mat-icon>
+        <p matLine >Actualizar Domiciliario</p>
+        </a> 
+        
         <mat-divider></mat-divider> 
         <!--Cliente-->
         <a mat-list-item

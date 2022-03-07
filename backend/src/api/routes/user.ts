@@ -22,6 +22,29 @@ export default (app: Router) => {
       res.status(500).end();
     }
   });
+
+  route.get('/getDeliverys', async (req: Request, res: Response) => {
+    try {
+      //inyectar dependencia a niverl de variable
+      const userService = Container.get(UserService);
+      const users = await userService.getDeliverys();
+      return res.json({users:users}).status(200);
+    } catch (error) {
+      res.status(500).end();
+    }
+  });
+
+  route.get('/getClients', async (req: Request, res: Response) => {
+    try {
+      //inyectar dependencia a niverl de variable
+      const userService = Container.get(UserService);
+      const users = await userService.getClients();
+      return res.json({users:users}).status(200);
+    } catch (error) {
+      res.status(500).end();
+    }
+  });
+
   route.post(
     '/registerUser',  
     celebrate({
@@ -101,8 +124,7 @@ export default (app: Router) => {
     },
   );
 
-  route.put(
-    '/updateUser/:email',
+  route.put(   '/updateUser/:email',
     celebrate({
       [Segments.BODY]: Joi.object().keys({
         idUser:Joi.number().required(),
