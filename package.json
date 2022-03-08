@@ -9,6 +9,7 @@
       },
     "scripts": {
         "build": "tsc", 
+        "heroku-postbuild": "npm run dev",
         "dev": "nodemon",
         "inspect": "nodemon --inspect src/app.ts"
     },
