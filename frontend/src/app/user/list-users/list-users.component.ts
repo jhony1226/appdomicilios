@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
@@ -6,6 +7,7 @@ import { Service } from 'src/app/interfaces/servicio';
 
 import { ServiceService } from 'src/app/services/service.service';
 import { UserService } from 'src/app/services/user.service';
+import { UpdateUserComponent } from '../update-user/update-user.component';
 
 @Component({
   selector: 'app-list-users',
@@ -13,13 +15,15 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./list-users.component.css'],
 })
 export class ListUsersComponent implements OnInit {
-  displayedColumns: string[] = [ 'Nombre', 'Email','Telefono'];
+  displayedColumns: string[] = [ 'Nombre', 'Email','Telefono','Accion'];
   dataSource = new MatTableDataSource<any>();
   usersData: any;
+  domiciliario:any;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
   constructor(
+    public dialog: MatDialog,
     private _userService: UserService,
     private _router: Router,
     private _Arouter: ActivatedRoute
@@ -50,5 +54,18 @@ export class ListUsersComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openDialogDom(domi:any): void { 
+    
+    const dialogRef2 = this.dialog.open(UpdateUserComponent, {
+      width: '40%',
+      data: { domicilio: domi, },
+    });
+    //dialogo para  domiciliarios
+    dialogRef2.afterClosed().subscribe((result) => { 
+      this.domiciliario = result;
+      this.ngOnInit();      
+     });
   }
 }

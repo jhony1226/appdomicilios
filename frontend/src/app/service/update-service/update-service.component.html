@@ -1,1 +1,113 @@
-<p>update-service works!</p>
+<div class="bgComponent">
+    <div class="form">
+      <mat-card class="card">
+        <div class="container">
+          <h1>Nuevo Servico</h1>
+          <br />
+          <button
+            class="ancho"
+            style="width: 200px"
+            mat-raised-button
+            (click)="openDialogClient()"
+          >
+            Seleccionar cliente
+          </button>
+          <br />
+          <div *ngIf="cliente" class="form-row">
+            <div class="col-md-4 mb-2">
+              <mat-form-field class="ancho bold" appearance="fill">
+                <input 
+                  matInput
+                  disabled
+                  placeholder="{{ nombre }}"
+                  required
+                />
+                <mat-hint>Nombre cliente</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4 mb-2"> 
+              <mat-form-field class="ancho bold" appearance="fill">
+                <input
+                  disabled 
+                  matInput
+                  placeholder="{{ celular }}"
+                  required
+                />
+                <mat-hint>Celular</mat-hint> </mat-form-field
+              ><mat-divider></mat-divider>
+            </div>
+          </div>
+          <br />
+          <div class="form-row">
+            <div class="col-md-4 md-3">
+              <mat-form-field class="ancho" appearance="outline">
+                <mat-label>Direccion origen</mat-label>
+                <input
+                  [(ngModel)]="registerData.source"
+                  matInput
+                  placeholder="Remitente" 
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-md-4 md-3">
+              <mat-form-field class="ancho" appearance="outline">
+                <mat-label>Direccion envio</mat-label>
+                <input
+                  [(ngModel)]="registerData.destination"
+                  matInput
+                  placeholder="Destino" 
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-md-3 md-2">
+              <mat-form-field class="ancho" appearance="outline">
+                <mat-label>Precio del servicio</mat-label>
+                <input
+                  [(ngModel)]="registerData.price"
+                  matInput
+                  placeholder="Costo"
+                  type="number" 
+                />
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <button
+            class="ancho"
+            style="width: 200px"
+            mat-raised-button
+            (click)="openDialogDom()"
+          >
+            Asignar Domiciliario
+          </button>
+          <div *ngIf="domicilio" class="col-md-3 md-2">
+            <mat-form-field
+              class="ancho bold"
+              style="font-weight: bold"
+              appearance="fill"
+            >
+              <input 
+                matInput
+                disabled
+                title="{{ nombreDom }}"
+                placeholder="{{ nombreDom }}" 
+              />
+            </mat-form-field>
+          </div>
+          <mat-form-field class="ancho" appearance="outline">
+            <mat-label>Observaciones</mat-label>
+            <textarea matInput 
+            [(ngModel)]="registerData.observation"
+            placeholder="Placeholder">
+          </textarea>
+          </mat-form-field>
+          <div class="center">
+            <button (click)="save()" class="button" mat-raised-button>
+              Guardar
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  

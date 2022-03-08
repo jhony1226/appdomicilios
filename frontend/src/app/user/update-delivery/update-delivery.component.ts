@@ -35,7 +35,9 @@ export class UpdateDeliveryComponent implements OnInit {
 
   }
   upUser():void{
-    this.registerData.phone=this.registerData.phone.toString();
+    if(this.registerData.phone!=null){      
+      this.registerData.phone=this.registerData.phone.toString();
+    }
     this.registerData.status=this.status;
 
     if(this.registerData.name == this.data.domicilio.name &&
@@ -58,20 +60,14 @@ export class UpdateDeliveryComponent implements OnInit {
 
     ) {
       this.message="ERROR. Datos incompletos"
-      console.log(this.message);
-      
-      
+      console.log(this.message); 
     } else {
-     
-      
-      console.log(this.registerData);
       
       this._userService.updateUser(this.registerData,this.email).subscribe({
         next:(v)=>{  
           
           //this._router.navigate(['/home/list-users'])
           this.registerData={}
-          console.log("Actualizado");
           console.log(v); 
            this.dialogRef.close(); 
           
