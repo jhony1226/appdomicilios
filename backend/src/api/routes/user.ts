@@ -132,7 +132,6 @@ export default (app: Router) => {
         name: Joi.string().required(),
         phone: Joi.string().required(),
         email: Joi.string().required(),
-        password: Joi.string().required(),
         status: Joi.string().required(),
       }),
     }),
@@ -153,7 +152,11 @@ export default (app: Router) => {
       if(userPhone)
         return res.status(400).send({message:'Ya existen usuarios con esta informacion'});
 
-      }    
+      }   
+      
+      if(!req.body.password){
+        req.body.password=user.password;
+      }
            
       const updateUser = await userService.UpdateUser(req.body as UserInput);
       

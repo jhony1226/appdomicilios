@@ -32,6 +32,8 @@ export class ListDeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
+    
     this._userService.listDeliverys().subscribe({
       next: (v) => {
         for(let i=0 ; i< v.users.length ; i++){
@@ -75,8 +77,7 @@ export class ListDeliveryComponent implements OnInit {
     //dialogo para  domiciliarios
     dialogRef2.afterClosed().subscribe((result) => { 
       this.domiciliario = result;
-      console.log( this.domiciliario.name);  
-      
+      this.ngOnInit();      
      });
   }
 
