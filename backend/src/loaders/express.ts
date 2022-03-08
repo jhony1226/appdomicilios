@@ -41,4 +41,6 @@ export default ({ app }: { app: express.Application }) => {
       },
     });
   });
+
+  app.use(express.static('../../public/dist'))
 };

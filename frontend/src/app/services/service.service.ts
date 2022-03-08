@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ export class ServiceService {
   private env:string;
 
   constructor(private _http : HttpClient,private _route:Router) { 
-    this.env=environment.APP_URL;
+    this.env=environment.APP_URL; 
   }
   listService(){
     return this._http.get<any>(this.env+'services/getServices/');
