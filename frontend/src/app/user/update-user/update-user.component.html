@@ -1,1 +1,47 @@
-<p>update-user works!</p>
+<div class="body">
+    <div class="login mat-elevation-z8">
+      <div class="container">
+        <mat-card-title>Actualizar Cliente</mat-card-title>
+        <br>
+        
+        <mat-form-field   appearance="outline">
+          <mat-label>Nombre Cliente</mat-label>
+          <input
+            [(ngModel)]="registerData.name"
+            matInput
+            placeholder="{{data.domicilio.name}}"
+            required
+          />
+        </mat-form-field>
+  
+  
+        <mat-form-field   appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            [(ngModel)]="registerData.email"
+            matInput
+            type="email"
+            placeholder="Correo"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Celular</mat-label>
+          <input
+            [(ngModel)]="registerData.phone"
+            matInput
+            type="number"
+            placeholder="Celular"
+            required
+          />
+        </mat-form-field>
+              
+
+        <button (click)="upUser()" class="button"  mat-raised-button>
+          Actualizar
+        </button>      
+        
+      </div>
+    </div>
+  </div>
+  

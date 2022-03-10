@@ -71,7 +71,7 @@ export class ListDeliveryComponent implements OnInit {
   openDialogDom(domi:any): void { 
     
     const dialogRef2 = this.dialog.open(UpdateDeliveryComponent, {
-      width: '100%',
+      width: '40%',
       data: { domicilio: domi,   },
     });
     //dialogo para  domiciliarios
