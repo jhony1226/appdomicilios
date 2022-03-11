@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
   private env:string;
 
-  constructor(private _http : HttpClient,private _route:Router) { 
+  constructor(private _http : HttpClient,private _route:Router, private _router: Router) { 
     this.env=environment.APP_URL;
   }
 
@@ -30,5 +30,12 @@ export class UserService {
   }
   updateUser(user:any,email:string){
     return this._http.put<any>(this.env+ 'user/updateUser/'+email,user);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    this._router.navigate(['/login']);
   }
 }
