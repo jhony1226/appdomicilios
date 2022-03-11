@@ -69,8 +69,11 @@ exports.default = (app) => {
             const existingUser = await userService.findUserById(req.body);
             if (!existingUser)
                 return res.status(400).send({ message: 'El usuario no existe' });
+            //castear el dato de iduser a idDeliv y poder usar la consulta getServiceByDeliv
+            const serviceReq = { idDeliv: undefined };
+            serviceReq.idDeliv = req.body.idUser;
             const serviceService = typedi_1.default.get(services_service_1.default);
-            const service = await serviceService.getServicesByDeliv(req.body);
+            const service = await serviceService.getServicesByDeliv(serviceReq);
             if (!service)
                 return res.status(400).send({ message: 'El usuario no tiene servicios asignados' });
             return res.status(200).send({ servicios: service });

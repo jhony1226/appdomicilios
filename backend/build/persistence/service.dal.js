@@ -24,7 +24,7 @@ class ServicesDalService {
     async getServices() {
         try {
             const query = {
-                text: 'select * from services',
+                text: 'select s.*, cliente.name as name_client, domi.name as name_deliv,st.name as name_status from services s inner join users as cliente on cliente.id=s.id_client inner join users as domi on domi.id=s.id_deliv inner join status_service as st on st.id_status_service=s.id_status',
             };
             const res = await postgresql_1.default.query(query);
             return res.rows;
