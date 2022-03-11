@@ -26,7 +26,7 @@ const routes: Routes = [
       {path:'update-service',component:UpdateServiceComponent},
       {path:'register-user',component:RegisterUserComponent},
       {path:'list-users',component:ListUsersComponent},
-      {path:'update-user',component:UpdateUserComponent},
+      {path:'update-user/:element',component:UpdateUserComponent},
       {path:'register-delivery',component:RegisterDeliveryComponent},
       {path:'list-delivery',component:ListDeliveryComponent},
       {path:'update-delivery',component:UpdateDeliveryComponent}

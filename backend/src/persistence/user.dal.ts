@@ -1,7 +1,7 @@
-import db from '@/loaders/postgresql';
-import Logger from '@/loaders/logger';
-import UserRepository from '@/repository/user.rep';
-import { UserInput, UserOutput } from '@/models/user.model';
+import db from '../loaders/postgresql';
+import Logger from '../loaders/logger';
+import UserRepository from '../repository/user.rep';
+import { UserInput, UserOutput } from '../models/user.model';
 import { query } from 'winston';
 
 export default class UserDalService implements UserRepository {

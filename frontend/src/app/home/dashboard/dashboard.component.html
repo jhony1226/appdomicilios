@@ -7,10 +7,31 @@
       <span class="example-spacer"></span>
       <div class="row mr-2 ml-auto">
         <ul class="row m-0 align-items-center">
+<<<<<<< HEAD
           <li> 
             <span>{{name}}</span>
               <mat-icon  mat-button (click)="_userService.logout()"
                >logout</mat-icon> 
+=======
+          <li>
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu"
+              class="user mt-2 d-flex align-items-center"
+            >
+              <img src="../../../assets/img/user.jpg" alt="" class="user-image mr-1 p-2" />
+  
+              User Name
+              <mat-icon class="user-image-icon ml-1"
+                >keyboard_arrow_down</mat-icon
+              >
+            </button>
+            <mat-menu #menu="matMenu"> 
+                <mat-icon class="logout" mat-button (click)="_userService.logout()"
+                >logout</mat-icon
+              > 
+            </mat-menu>
+>>>>>>> 0cf364265ba6cef21644c2ecc87cff601936b94c
           </li>
         </ul>
       </div> 
@@ -50,12 +71,6 @@
         <p matLine >Registrar Domiciliario</p>
         </a>
       
-        <a mat-list-item
-        (click)="toggleActive($event)"
-        routerLink="update-delivery" >
-        <mat-icon   mat-list-icon>delivery_dining</mat-icon>
-        <p matLine >Actualizar Domiciliario</p>
-        </a> 
         
         <mat-divider></mat-divider> 
         <!--Cliente-->
@@ -65,7 +80,7 @@
         <mat-icon   mat-list-icon>people</mat-icon>
         <p matLine>Clientes</p>
         </a> 
-        <!--Domiciliario-->
+        <!--Cliente-->
         <a mat-list-item
         (click)="toggleActive($event)"
         routerLink="register-user" >

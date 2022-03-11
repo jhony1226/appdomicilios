@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import routes from '@/api';
-import config from '@/config';
+import routes from '../api';
+import config from '../config';
+import path from  "path";
+//var path = require('path');
 
 export default ({ app }: { app: express.Application }) => {
   app.get('/status', (req, res) => {
@@ -15,6 +17,10 @@ export default ({ app }: { app: express.Application }) => {
   app.enable('trust proxy');
   app.use(cors());
   app.use(express.json());
+  app.use(express.static('public'));
+  app.get("*",(req,res)=>{ 
+  res.sendFile(path.resolve(__dirname,'../../public/index.html'));
+  })
 
   app.use(config.api.prefix, routes());
 
@@ -41,4 +47,8 @@ export default ({ app }: { app: express.Application }) => {
       },
     });
   });
+
+  //app.use(express.static('../../public'))
 };
+ 
+

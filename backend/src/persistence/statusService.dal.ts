@@ -1,7 +1,7 @@
-import db from '@/loaders/postgresql';
-import Logger from '@/loaders/logger';
-import statusServiseRepository from '@/repository/statusService.rep';
-import { StatusServiceInput, StatusServiceOutput } from '@/models/statusService.model';
+import db from '../loaders/postgresql';
+import Logger from '../loaders/logger';
+import statusServiseRepository from '../repository/statusService.rep';
+import { StatusServiceInput, StatusServiceOutput } from '../models/statusService.model';
 import { query } from 'winston';
 
 export default class statusServiceDalService implements  statusServiseRepository{

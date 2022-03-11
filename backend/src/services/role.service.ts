@@ -1,11 +1,11 @@
-import { Role } from '@/models/role.model';
-import {UserOutput ,UserInput } from '@/models/user.model';
-import RoleDalService from '@/persistence/role.dal';
-import RoleRepository from '@/repository/role.rep';  
+import { Role } from '../models/role.model';
+import {UserOutput ,UserInput } from '../models/user.model';
+import RoleDalService from '../persistence/role.dal';
+import RoleRepository from '../repository/role.rep';  
  
-import { RoleInterface,  } from '@/utils/helpers';
+import { RoleInterface,  } from '../utils/helpers';
 import { Service } from 'typedi';
-
+//l
 @Service()
 export default class RoleService {
     constructor(@RoleInterface() private roleInterface: RoleRepository) {}
