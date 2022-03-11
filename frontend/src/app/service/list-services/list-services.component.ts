@@ -37,7 +37,6 @@ export class ListServicesComponent implements OnInit {
         
         this.servicesData = v.servicios;
         for(let i=0;i<this.servicesData.length;i++){
-          console.log(this.servicesData[i]);
           
            this.servicesData[i].creation_date=new Date(this.servicesData[i].creation_date)
            this.servicesData[i].creation_date=this.servicesData[i].creation_date.toLocaleString();
