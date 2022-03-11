@@ -1,6 +1,6 @@
-import { ServiceInput, ServiceOutput } from '@/models/service.model';
-import ServiceRepository from '@/repository/service.rep';
-import { ServiceInterface } from '@/utils/helpers';
+import { ServiceInput, ServiceOutput } from '../models/service.model';
+import ServiceRepository from '../repository/service.rep';
+import { ServiceInterface } from '../utils/helpers';
 import { Service } from 'typedi';
 
 @Service()

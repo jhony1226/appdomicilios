@@ -1,8 +1,8 @@
-import db from '@/loaders/postgresql';
-import Logger from '@/loaders/logger';
-import RoleRepository from '@/repository/role.rep';
-import { UserInput, UserOutput } from '@/models/user.model';
-import { Role } from '@/models/role.model';
+import db from '../loaders/postgresql';
+import Logger from '../loaders/logger';
+import RoleRepository from '../repository/role.rep';
+import { UserInput, UserOutput } from '../models/user.model';
+import { Role } from '../models/role.model';
 
 export default class RoleDalService implements RoleRepository {
     

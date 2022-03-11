@@ -1,16 +1,11 @@
-import ProductDalService from '@/persistence/product.dal';
-import ServicesDalService from '@/persistence/service.dal';
-import UserDalService from '@/persistence/user.dal';
-import RoleDalService from '@/persistence/role.dal';
-import StatusServiceDalService from '@/persistence/statusService.dal';
+ 
+import ServicesDalService from '../persistence/service.dal';
+import UserDalService from '../persistence/user.dal';
+import RoleDalService from '../persistence/role.dal';
+import StatusServiceDalService from '../persistence/statusService.dal';
 import Container, { Constructable, ContainerInstance } from 'typedi';
 
-export function ProductInterface() {
-  return function (object: Constructable<unknown>, propertyName: string, index?: number) {
-    const templateDalService = new ProductDalService();
-    Container.registerHandler({ object, propertyName, index, value: containerInstance => templateDalService });
-  };
-}
+ 
 
 export function ServiceInterface() {
   return function (object: Constructable<unknown>, propertyName: string, index?: number) {

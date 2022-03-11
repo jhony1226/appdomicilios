@@ -1,7 +1,7 @@
-import db from '@/loaders/postgresql';
-import Logger from '@/loaders/logger';
-import serviseRepository from '@/repository/service.rep';
-import { ServiceInput, ServiceOutput } from '@/models/service.model';
+import db from '../loaders/postgresql';
+import Logger from '../loaders/logger';
+import serviseRepository from '../repository/service.rep';
+import { ServiceInput, ServiceOutput } from '../models/service.model';
 import { query } from 'winston';
 
 export default class ServicesDalService implements serviseRepository {

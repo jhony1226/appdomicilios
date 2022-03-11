@@ -5,12 +5,12 @@
     "main": "src/app.ts",
     "engines": {
         "node": "14.x",
-        "npm" : "7.x"
-      },
+        "npm": "7.x"
+    },
     "scripts": {
-        
-        "heroku-postbuild": "npm run dev",
-        "dev": "nodemon",
+        "compile": "tsc",
+        "dev": "nodemon", 
+        "start": "node build/app.js",
         "inspect": "nodemon --inspect src/app.ts"
     },
     "author": "Jefferson Bahamon",
@@ -35,6 +35,7 @@
         "bcrypt": "^5.0.1",
         "body-parser": "^1.19.0",
         "celebrate": "^15.0.0",
+        "config": "^3.3.7",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "errorhandler": "^1.5.1",

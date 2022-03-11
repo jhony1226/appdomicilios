@@ -1,7 +1,7 @@
-import { UserOutput, UserInput } from '@/models/user.model';
-import UserRepository from '@/repository/user.rep';
-
-import { UserInterface } from '@/utils/helpers';
+import { UserOutput, UserInput } from '../models/user.model';
+import UserRepository from '../repository/user.rep';
+//ll
+import { UserInterface } from '../utils/helpers';
 import { Service } from 'typedi';
 
 @Service()

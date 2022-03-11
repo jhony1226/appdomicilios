@@ -1,13 +1,12 @@
-import { ServiceInput } from '@/models/service.model';
-import ServicesService from '@/services/services.service';
-import { UserInput, UserOutput } from '@/models/user.model';
-import UserService from '@/services/user.service';
+import { ServiceInput } from '../../models/service.model';
+import ServicesService from '../../services/services.service';
+import { UserInput, UserOutput } from '../../models/user.model';
+import UserService from '../../services/user.service';
 import { Router, Request, Response } from 'express';
 import Container from 'typedi';
 import { celebrate, Joi, Segments, errors } from 'celebrate';
 // import middlewares from '../middlewares';
-
-import { ProductInput } from './../../models/products.model';
+ 
 const route = Router();
 
 export default (app: Router) => {
@@ -57,6 +56,7 @@ export default (app: Router) => {
 
   route.get('/getServices', async (req: Request, res: Response) => {
     try {
+      console.log("entro a roles");
       const serviceService = Container.get(ServicesService);
       const service = await serviceService.getServices();
       console.log(service);

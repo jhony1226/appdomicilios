@@ -1,6 +1,6 @@
-import { StatusServiceInput, StatusServiceOutput } from '@/models/statusService.model';
-import StatusServiceRepository from '@/repository/statusService.rep';
-import { StatusServiceInterface } from '@/utils/helpers';
+import { StatusServiceInput, StatusServiceOutput } from '../models/statusService.model';
+import StatusServiceRepository from '../repository/statusService.rep';
+import { StatusServiceInterface } from '../utils/helpers';
 import { Service } from 'typedi';
 
 @Service()

@@ -1,8 +1,8 @@
 import { Router, Request, Response } from 'express';
 import Container from 'typedi';
 import { UserInput, UserOutput } from '@/models/user.model';
-import {Role}  from '@/models/role.model';
-import RoleService from '@/services/role.service';
+import {Role}  from '../../models/role.model';
+import RoleService from '../../services/role.service';
 import { celebrate, Joi, Segments,errors} from 'celebrate';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
