@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         next:(v)=>{
           this._route.navigate(['/home']);
           localStorage.setItem('token',v.token);
+          localStorage.setItem('token',v.userName);
         }
       })
     }
