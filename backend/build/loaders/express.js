@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const api_1 = __importDefault(require("../api"));
 const config_1 = __importDefault(require("../config"));
+const path_1 = __importDefault(require("path"));
 //var path = require('path');
 exports.default = ({ app }) => {
     app.get('/status', (req, res) => {
@@ -18,11 +19,11 @@ exports.default = ({ app }) => {
     app.enable('trust proxy');
     app.use((0, cors_1.default)());
     app.use(express_1.default.json());
-    app.use(express_1.default.static('public'));
-    // app.get("*",(req,res)=>{ 
-    // res.sendFile(path.resolve(__dirname,'../../public/index.html'));
-    //})
     app.use(config_1.default.api.prefix, (0, api_1.default)());
+    app.use(express_1.default.static('public'));
+    app.get("*", (req, res) => {
+        res.sendFile(path_1.default.resolve(__dirname, '../../public/index.html'));
+    });
     /// catch 404 and forward to error handler
     app.use((req, res, next) => {
         const err = new Error('Not Found');
@@ -44,6 +45,5 @@ exports.default = ({ app }) => {
             },
         });
     });
-    //app.use(express.static('../../public'))
 };
 //# sourceMappingURL=express.js.map

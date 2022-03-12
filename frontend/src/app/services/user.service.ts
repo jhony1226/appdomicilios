@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,12 @@ export class UserService {
   }
   updateUser(user:any,email:string){
     return this._http.put<any>(this.env+ 'user/updateUser/'+email,user);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    this._route.navigate(['/login']);
   }
 }

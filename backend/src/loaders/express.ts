@@ -16,13 +16,12 @@ export default ({ app }: { app: express.Application }) => {
 
   app.enable('trust proxy');
   app.use(cors());
-  app.use(express.json());
-  app.use(express.static('public'));
- // app.get("*",(req,res)=>{ 
-  // res.sendFile(path.resolve(__dirname,'../../public/index.html'));
-  //})
-
+  app.use(express.json()); 
   app.use(config.api.prefix, routes());
+  app.use(express.static('public'));
+  app.get("*",(req,res)=>{  
+    res.sendFile(path.resolve(__dirname,'../../public/index.html'));
+   }) 
 
   /// catch 404 and forward to error handler
   app.use((req, res, next) => {
@@ -46,9 +45,11 @@ export default ({ app }: { app: express.Application }) => {
         message: err.message,
       },
     });
-  });
+  }); 
 
-  //app.use(express.static('../../public'))
+  
+
+   
 };
  
 
