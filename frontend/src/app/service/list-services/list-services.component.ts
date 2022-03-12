@@ -34,8 +34,17 @@ export class ListServicesComponent implements OnInit {
   ngOnInit(): void {  
     this._serviceService.listService().subscribe({
       next: (v) => {
+        
         this.servicesData = v.servicios;
-        console.log(v);
+        for(let i=0;i<this.servicesData.length;i++){
+          
+           this.servicesData[i].creation_date=new Date(this.servicesData[i].creation_date)
+           this.servicesData[i].creation_date=this.servicesData[i].creation_date.toLocaleString();
+
+           this.servicesData[i].closing_date=new Date(this.servicesData[i].closing_date);
+           this.servicesData[i].closing_date=this.servicesData[i].closing_date.toLocaleString();
+         }
+        console.log(this.servicesData);
         
         // this.isPo = v.verifyPo;
         this.dataSource = new MatTableDataSource(this.servicesData);

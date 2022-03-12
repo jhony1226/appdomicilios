@@ -74,9 +74,12 @@ export default (app: Router) => {
       const userService=Container.get(UserService);
       const existingUser= await userService.findUserById(req.body as UserInput);
       if(!existingUser) return res.status(400).send({message:'El usuario no existe'});
-      
+      //castear el dato de iduser a idDeliv y poder usar la consulta getServiceByDeliv
+      const serviceReq={idDeliv:undefined};
+      serviceReq.idDeliv=req.body.idUser;
+
       const serviceService = Container.get(ServicesService);
-      const service = await serviceService.getServicesByDeliv(req.body as ServiceInput);
+      const service = await serviceService.getServicesByDeliv(serviceReq as ServiceInput);
       
       if(!service) return res.status(400).send({message:'El usuario no tiene servicios asignados'});
 
