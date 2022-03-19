@@ -59,6 +59,8 @@ export default (app: Router) => {
       console.log("entro a roles");
       const serviceService = Container.get(ServicesService);
       const service = await serviceService.getServices();
+      console.log("locas teorias");
+      
       console.log(service);
       
       if(!service) return res.status(400).send({message:'Error al listar servicios'});

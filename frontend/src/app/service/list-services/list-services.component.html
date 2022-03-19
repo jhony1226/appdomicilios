@@ -37,8 +37,8 @@
         </ng-container>
 
         <!-- Symbol Column -->
-        <ng-container matColumnDef="Precio">
-          <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <ng-container  matColumnDef="Precio">
+          <th mat-header-cell *matHeaderCellDef >Precio</th>
           <td style="width: 5;" mat-cell *matCellDef="let element">{{ element.price }}</td>
         </ng-container>
 
@@ -48,12 +48,7 @@
             {{element.creation_date}}
           </td>
         </ng-container>
-        <ng-container matColumnDef="Eliminar">
-          <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-          <td mat-cell *matCellDef="let element"> 
-            <mat-icon class="colorDelete  ">delete_forever</mat-icon>
-          </td>
-        </ng-container>
+         
         <ng-container matColumnDef="Detalles">
           <th mat-header-cell *matHeaderCellDef>Detalles</th>
           <td mat-cell *matCellDef="let element">
@@ -64,9 +59,10 @@
 
         <ng-container matColumnDef="Actualizar">
           <th mat-header-cell *matHeaderCellDef>Actualizar</th>
-          <td mat-cell *matCellDef="let element">
+          <td mat-cell *matCellDef="let element" >
             <mat-icon [routerLink]="['/home/update-service/', element]" 
-            class="colorUpdate">border_color</mat-icon>  
+            class="colorUpdate">border_color</mat-icon> 
+            <mat-icon class="colorDelete  ">delete_forever</mat-icon> 
           </td>
         </ng-container>
         
