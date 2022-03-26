@@ -84,6 +84,22 @@ class ServicesDalService {
         }
     }
     ;
+    async updateStatus(service) {
+        const query = {
+            text: 'UPDATE services SET id_status=$1 WHERE id=$2',
+            values: [service.idStatus, service.idService]
+        };
+        try {
+            const res = await postgresql_1.default.query(query);
+            if (res.rowCount == 1)
+                return service;
+        }
+        catch (error) {
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
+        }
+    }
+    ;
     async findService(service) {
         const query = {
             text: 'select * from services where id=$1',

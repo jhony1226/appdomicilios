@@ -19,7 +19,5 @@ export default (app: Router) => {
     } catch (error) {
       return res.status(500).end();
     }
-  });
-
- 
+  }); 
 };

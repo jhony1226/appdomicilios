@@ -49,6 +49,22 @@ exports.default = (app) => {
             return res.status(500).end();
         }
     });
+    route.put('/updateStatus', async (req, res) => {
+        try {
+            console.log(req.body);
+            const serviceService = typedi_1.default.get(services_service_1.default);
+            const serviceFind = await serviceService.findService(req.body);
+            if (!serviceFind)
+                return res.status(400).send({ message: 'El servicio no existe' });
+            const service = await serviceService.updateStatus(req.body);
+            if (!service)
+                return res.status(400).send({ message: 'Error no se actualizo el servicio' });
+            return res.status(200).send({ message: 'El servicio se actualizo correctamente' });
+        }
+        catch (error) {
+            return res.status(500).end();
+        }
+    });
     route.get('/getServices', async (req, res) => {
         try {
             console.log("entro a roles");

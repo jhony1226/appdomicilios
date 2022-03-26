@@ -36,6 +36,14 @@ export default class ServicesService {
       throw error;
     }
   }
+  public async updateStatus(service: ServiceInput): Promise<ServiceOutput> {
+    try {
+      return await this.servicesInterface.updateStatus(service);
+    } catch (error) {
+      throw error;
+    }
+  }
+  
   public async deleteService(service: ServiceInput): Promise<ServiceOutput> {
     try {
       return await this.servicesInterface.deleteService(service);

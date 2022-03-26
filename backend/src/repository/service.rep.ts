@@ -5,6 +5,7 @@ export default interface StatusServiceRepository {
   getServices(): Promise<ServiceOutput[]>;
   getServicesByDeliv(service: ServiceInput): Promise<ServiceOutput[]>;
   updateService(service: ServiceInput): Promise<ServiceOutput>;
+  updateStatus(service: ServiceInput): Promise<ServiceOutput>;
   deleteService(service: ServiceInput): Promise<ServiceOutput>;
   findService(service: ServiceInput): Promise<ServiceOutput>;
 }

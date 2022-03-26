@@ -80,6 +80,20 @@ export default class ServicesDalService implements serviseRepository {
         }
       };
 
+      async updateStatus(service: ServiceInput): Promise<ServiceOutput> {
+        const query = {
+          text:'UPDATE services SET id_status=$1 WHERE id=$2',
+          values:[service.idStatus,service.idService]
+        };
+        try {
+          const res= await db.query(query);
+          if(res.rowCount==1) return service;
+        } catch (error) {
+          Logger.error(`Error SQL => ${error}`);
+          throw error;
+        }
+      };
+
       async findService(service: ServiceInput): Promise<ServiceOutput> {
         const query = {
           text:'select * from services where id=$1',

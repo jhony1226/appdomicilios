@@ -54,6 +54,23 @@ export default (app: Router) => {
     }
   });
 
+  route.put('/updateStatus', async (req: Request, res: Response) => {
+    try {
+      console.log(req.body);
+      
+      const serviceService = Container.get(ServicesService);
+      const serviceFind = await serviceService.findService(req.body as  ServiceInput);
+      if(!serviceFind) return res.status(400).send({message:'El servicio no existe'})
+
+      const service = await serviceService.updateStatus(req.body as ServiceInput);
+      if(!service) return res.status(400).send({message:'Error no se actualizo el servicio'});
+
+      return res.status(200).send({message:'El servicio se actualizo correctamente'});
+    } catch (error) {
+      return res.status(500).end();
+    }
+  });
+
   route.get('/getServices', async (req: Request, res: Response) => {
     try {
       console.log("entro a roles");

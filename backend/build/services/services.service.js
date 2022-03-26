@@ -50,6 +50,14 @@ let ServicesService = class ServicesService {
             throw error;
         }
     }
+    async updateStatus(service) {
+        try {
+            return await this.servicesInterface.updateStatus(service);
+        }
+        catch (error) {
+            throw error;
+        }
+    }
     async deleteService(service) {
         try {
             return await this.servicesInterface.deleteService(service);
