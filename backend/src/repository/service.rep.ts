@@ -1,8 +1,8 @@
-import { ServiceInput, ServiceOutput } from './../models/service.model';
+import { ServiceInput, ServiceOutput, ServiceOutputAll } from './../models/service.model';
 export default interface StatusServiceRepository {
   //falta crud?
   registerService(service: ServiceInput): Promise<ServiceOutput>;
-  getServices(): Promise<ServiceOutput[]>;
+  getServices(): Promise<ServiceOutputAll[]>;
   getServicesByDeliv(service: ServiceInput): Promise<ServiceOutput[]>;
   updateService(service: ServiceInput): Promise<ServiceOutput>;
   updateStatus(service: ServiceInput): Promise<ServiceOutput>;

@@ -1,4 +1,4 @@
-import { ServiceInput, ServiceOutput } from '../models/service.model';
+import { ServiceInput, ServiceOutput, ServiceOutputAll } from '../models/service.model';
 import ServiceRepository from '../repository/service.rep';
 import { ServiceInterface } from '../utils/helpers';
 import { Service } from 'typedi';
@@ -14,7 +14,7 @@ export default class ServicesService {
       throw error;
     }
   }
-  public async getServices(): Promise<ServiceOutput[]> {
+  public async getServices(): Promise<ServiceOutputAll[]> {
     try {
       return await this.servicesInterface.getServices();
     } catch (error) {

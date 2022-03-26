@@ -19,6 +19,13 @@ exports.default = ({ app }) => {
     app.enable('trust proxy');
     app.use((0, cors_1.default)());
     app.use(express_1.default.json());
+<<<<<<< HEAD
+=======
+    app.use(express_1.default.static('public'));
+    app.get("*", (req, res) => {
+        res.sendFile(path_1.default.resolve(__dirname, '../../public/index.html'));
+    });
+>>>>>>> fa051f50b4e13bc3fdbbfd2996dd76abe9520df4
     app.use(config_1.default.api.prefix, (0, api_1.default)());
     app.use(express_1.default.static('public'));
     app.get("*", (req, res) => {

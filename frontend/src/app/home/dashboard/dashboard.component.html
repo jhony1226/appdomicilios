@@ -2,29 +2,18 @@
   <mat-toolbar class="mat-elevation-z8"   >  
       <button mat-icon-button (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
-      </button> 
-      <span >App Domicilios</span>
+      </button>  
+      <div class="example-button-row">
+        <button routerLink="list-services" mat-button>App Domicilios</button>  
+      </div> 
       <span class="example-spacer"></span>
       <div class="row mr-2 ml-auto">
         <ul class="row m-0 align-items-center">
-          <li>
-            <button
-              mat-button
-              [matMenuTriggerFor]="menu"
-              class="user mt-2 d-flex align-items-center"
-            >
-              <img src="../../../assets/img/user.jpg" alt="" class="user-image mr-1 p-2" />
-  
-              User Name
-              <mat-icon class="user-image-icon ml-1"
-                >keyboard_arrow_down</mat-icon
-              >
-            </button>
-            <mat-menu #menu="matMenu"> 
-                <mat-icon class="logout" mat-button (click)="_userService.logout()"
-                >logout</mat-icon
-              > 
-            </mat-menu>
+          <li> 
+            <span class="example-icon  ">{{name}}</span>
+            <span class="example-spacer"></span>
+              <mat-icon  class="example-icon favorite-icon" mat-button (click)="_userService.logout()"
+               >logout</mat-icon> 
           </li>
         </ul>
       </div> 

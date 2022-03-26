@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
   private env:string;
 
-  constructor(private _http : HttpClient,private _route:Router) { 
+  constructor(private _http : HttpClient,private _route:Router, private _router: Router) { 
     this.env=environment.APP_URL;
   }
 
@@ -36,6 +36,10 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('name');
+<<<<<<< HEAD
     this._route.navigate(['/login']);
+=======
+    this._router.navigate(['/login']);
+>>>>>>> fa051f50b4e13bc3fdbbfd2996dd76abe9520df4
   }
 }
