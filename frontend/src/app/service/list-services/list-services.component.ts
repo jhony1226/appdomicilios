@@ -14,9 +14,10 @@ import { ServiceService } from 'src/app/services/service.service';
 
  
 export class ListServicesComponent implements OnInit { 
-  displayedColumns: string[] = ['Domiciliario', 'Destino','Cliente', 'Estado', 'Precio', 'Fecha','Detalles', 'Actualizar'];
+  displayedColumns: string[] = ['Domiciliario', 'Destino','Cliente', 'Estado', 'Precio', 'Fecha','Detalles', 'Accion'];
   dataSource = new MatTableDataSource<any>();
   servicesData:any; 
+  message:string="";
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -56,9 +57,27 @@ export class ListServicesComponent implements OnInit {
       },
     });  
   }
-  deleteUserTeam = async (team: any) => {
-  }
-
+  deleteService = async (service: any) => {
+    console.log(service);
+    
+      this._serviceService.deleteService(service).subscribe({
+        next: (v) => {
+          let index = this.servicesData.indexOf(service);
+          if (index > -1) {
+            this.servicesData.splice(index, 1);
+            this.dataSource = new MatTableDataSource(this.servicesData);
+            this.dataSource.paginator = this.paginator;
+            this.message = 'Delete Project';
+            
+          }
+        },
+        error: (e) => {
+          this.message = e.error.message;
+          
+        },
+      });
+    
+  };
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

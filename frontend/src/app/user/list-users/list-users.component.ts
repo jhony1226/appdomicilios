@@ -17,6 +17,7 @@ import { UpdateUserComponent } from '../update-user/update-user.component';
 export class ListUsersComponent implements OnInit {
   displayedColumns: string[] = [ 'Nombre', 'Email','Telefono','Accion'];
   dataSource = new MatTableDataSource<any>();
+  message:string;
   usersData: any;
   domiciliario:any;
   @ViewChild(MatPaginator)
@@ -28,6 +29,7 @@ export class ListUsersComponent implements OnInit {
     private _router: Router,
     private _Arouter: ActivatedRoute
   ) {
+    this.message="";
     this.usersData = {};
     this.dataSource = new MatTableDataSource(this.usersData);
   }
@@ -48,6 +50,26 @@ export class ListUsersComponent implements OnInit {
       },
     });
   }
+
+  eliminar(user:any){
+    console.log({userDelete:user});
+    
+    console.log(user);
+    
+    this._userService.deleteUser(user).subscribe({
+      next: (v) => {
+        console.log(v);
+               
+      },
+      error: (e) => {
+        this.message = e.error.message;
+        
+      },
+    });
+    
+  }
+
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

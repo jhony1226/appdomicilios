@@ -47,7 +47,7 @@ export default class UserService {
     }
   }
 
-  public async findUserById(user: UserInput): Promise<UserOutput> {
+  public async findUserById(user: any): Promise<UserOutput> {
     try {
       return await this.userInterface.findUserById(user);
     } catch (error) {
@@ -71,7 +71,15 @@ export default class UserService {
     }
   }
 
-  public async deleteUser(user: UserInput): Promise<UserInput> {
+  public async findStatus(user: any): Promise<any> {
+    try {
+      return await this.userInterface.findStatus(user)
+    } catch (error) {
+      return error;
+    }
+  }
+
+  public async deleteUser(user: any): Promise<UserInput> {
     try {
       return await this.userInterface.deleteUser(user)
     } catch (error) {

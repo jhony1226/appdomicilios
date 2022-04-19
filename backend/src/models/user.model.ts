@@ -9,6 +9,7 @@ export interface UserOutput {
   password: string;
   registerDate: Date;
   status: string;
+  token:string
 }
 
 export interface UserInput {
@@ -20,4 +21,5 @@ export interface UserInput {
   password: string;
   registerDate: Date;
   status: string;
+  token:string
 }

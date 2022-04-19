@@ -1,4 +1,4 @@
-import { ServiceInput } from '../../models/service.model';
+import { ServiceInput, ServiceInputDel } from '../../models/service.model';
 import ServicesService from '../../services/services.service';
 import { UserInput, UserOutput } from '../../models/user.model';
 import UserService from '../../services/user.service';
@@ -41,6 +41,8 @@ export default (app: Router) => {
 
   route.put('/updateService', async (req: Request, res: Response) => {
     try {
+      console.log("back updateService"); console.log(req.body);      
+      
       const serviceService = Container.get(ServicesService);
       const serviceFind = await serviceService.findService(req.body as  ServiceInput);
       if(!serviceFind) return res.status(400).send({message:'El servicio no existe'})
@@ -56,7 +58,7 @@ export default (app: Router) => {
 
   route.get('/getServices', async (req: Request, res: Response) => {
     try {
-      console.log("entro a roles");
+      
       const serviceService = Container.get(ServicesService);
       const service = await serviceService.getServices();
       console.log("locas teorias");
@@ -91,16 +93,36 @@ export default (app: Router) => {
     }
   });
 
+  route.get('/getServiceById/:id', async (req: Request, res: Response) => {
+    try {
+      console.log(req.params.id);
+      
+      const serviceService = Container.get(ServicesService);
+      const service = await serviceService.getServiceById(req.params);
+      
+      if(service.length===0) return res.status(400).send({message:'No existe el servicio'})
+      
+      if(!service) return res.status(400).send({message:'Error al listar servicios'});
+
+      return res.status(200).send({servicios:service});
+     
+    } catch (error) {
+      res.status(500).end();
+    }
+  });
+
   route.delete('/deleteService', 
-  celebrate({
+  /**celebrate({
     [Segments.BODY]: Joi.object().keys({
-      idService:Joi.number().required()      
+      id:Joi.number().required()      
     }),
-  }),
+  }),*/
   async (req: Request, res: Response) => {
     try {
+      console.log('ingreso');
+      
       const serviceService = Container.get(ServicesService);
-      const service = await serviceService.deleteService(req.body as ServiceInput);
+      const service = await serviceService.deleteService(req.body as ServiceInputDel);
       if(!service) return res.status(400).send({message:'Error, no se elimino el servicio'})
       return res.status(200).send({message:'Servicio eliminado correctamente'});
     } catch (error) {

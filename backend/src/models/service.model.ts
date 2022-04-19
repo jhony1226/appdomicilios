@@ -8,9 +8,7 @@ export interface ServiceInput {
   destination: string;
   source: string;
   observation: string;
-  idStatus: number;
-  
-  
+  idStatus: number;  
 }
 
 export interface ServiceOutput {
@@ -40,3 +38,6 @@ export interface ServiceOutputAll {
   
 }
 
+export interface ServiceInputDel {
+  id:number;
+}

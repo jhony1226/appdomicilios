@@ -11,6 +11,7 @@ import { RegisterDeliveryComponent } from './user/register-delivery/register-del
 import { RegisterUserComponent } from './user/register-user/register-user.component';
 import { UpdateDeliveryComponent } from './user/update-delivery/update-delivery.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { DetailServiceComponent } from './service/detail-service/detail-service.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
         {path:'list-services',component:ListServicesComponent},
         {path:'registerService',component:RegisterComponent}, 
       {path:'update-service',component:UpdateServiceComponent},
+      {path:'detail-service',component:DetailServiceComponent},
       {path:'register-user',component:RegisterUserComponent},
       {path:'list-users',component:ListUsersComponent},
       {path:'update-user/:element',component:UpdateUserComponent},

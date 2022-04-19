@@ -18,6 +18,7 @@ export class ListDeliveryComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
   usersData: any;
   domiciliario:any;
+  message:any;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -27,6 +28,7 @@ export class ListDeliveryComponent implements OnInit {
     private _router: Router,
     private _Arouter: ActivatedRoute
   ) {
+    this.message="";
     this.usersData = {};
     this.dataSource = new MatTableDataSource(this.usersData);
   }
@@ -60,6 +62,25 @@ export class ListDeliveryComponent implements OnInit {
       },
     });
   }
+
+  eliminar(user:any){
+    console.log({userDelete:user});
+    
+    console.log(user);
+    
+    this._userService.deleteUser(user).subscribe({
+      next: (v) => {
+        console.log(v);
+               
+      },
+      error: (e) => {
+        this.message = e.error.message;
+        
+      },
+    });
+    
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

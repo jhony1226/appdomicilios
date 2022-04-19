@@ -20,7 +20,8 @@ export default class RoleDalService implements RoleRepository {
         return role;
         
       } catch (error) {
-        throw'mensaje';
+        Logger.error(`Error SQL => ${error}`);
+          throw error;
       }
     }
 
@@ -32,7 +33,8 @@ export default class RoleDalService implements RoleRepository {
             const res = await db.query(query);  
             return res.rows;
           } catch (error) {
-            throw'mensaje';
+            Logger.error(`Error SQL => ${error}`);
+          throw error;
           }
     }
     async findRole(role:Role): Promise<Role> {
@@ -44,8 +46,8 @@ export default class RoleDalService implements RoleRepository {
           const res = await db.query(query); 
           return res.rows[0] ;
         } catch (error) {
+          Logger.error(`Error SQL => ${error}`);
           throw error;
-          ;
         }
       }
 
@@ -58,8 +60,8 @@ export default class RoleDalService implements RoleRepository {
           const res = await db.query(query);          
           return res.rows[0] ;
         } catch (error) {
+          Logger.error(`Error SQL => ${error}`);
           throw error;
-          ;
         }
       }
 
