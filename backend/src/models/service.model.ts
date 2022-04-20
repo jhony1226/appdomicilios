@@ -39,4 +39,4 @@ export interface ServiceOutputAll {
   name_status: string;
   
 }
-
+ 

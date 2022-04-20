@@ -51,10 +51,12 @@ export default class ServicesDalService implements serviseRepository {
         }
       } ;
 
-      async deleteService(service: ServiceInput): Promise<ServiceInput> {     
+      async deleteService(service: any): Promise<ServiceInput> {  
+        console.log(service);  
+        console.log("dsf"); 
         const query = {
             text: 'delete from services where id=$1 ',
-            values:[service.idService]
+            values:[service]
           };        
         try {
          const res= await db.query(query);        
@@ -94,10 +96,10 @@ export default class ServicesDalService implements serviseRepository {
         }
       };
 
-      async findService(service: ServiceInput): Promise<ServiceOutput> {
+      async findService(service: any): Promise<ServiceOutput> {
         const query = {
           text:'select * from services where id=$1',
-          values:[service.idService]
+          values:[service]
         };
         try {
           const res= await db.query(query);

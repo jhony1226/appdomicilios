@@ -18,7 +18,7 @@ export class ListServicesComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
   servicesData:any; 
   @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  paginator!: MatPaginator; 
 
   constructor(
     private _serviceService:ServiceService,
@@ -56,7 +56,18 @@ export class ListServicesComponent implements OnInit {
       },
     });  
   }
-  deleteUserTeam = async (team: any) => {
+  deleteService = async (service: any) => {
+    console.log("delete"+ service.id);
+    
+    this._serviceService.deleteService(service.id).subscribe({
+      next: (v) => {
+        console.log(v); v
+      },
+
+      error: (e) => {
+        console.log(e); 
+      },
+    });
   }
 
   applyFilter(event: Event) {

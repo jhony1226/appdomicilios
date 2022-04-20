@@ -4,9 +4,7 @@ import UserRepository from '../repository/user.rep';
 import { UserInput, UserOutput } from '../models/user.model';
 import { query } from 'winston';
 
-export default class UserDalService implements UserRepository {
-  
-  
+export default class UserDalService implements UserRepository { 
 
   async updateUser(user: UserInput): Promise<UserOutput> {
     const query = {
@@ -100,6 +98,8 @@ export default class UserDalService implements UserRepository {
         values:[email]
       };
       const res = await db.query(query); 
+      
+      
       return res.rows[0] ;
     } catch (error) {
       throw error;
@@ -150,4 +150,21 @@ export default class UserDalService implements UserRepository {
       ;
     }
   }
+  
+  async registerTokenApk(token:any):Promise<any>{
+    const fecha= new Date();  
+    const query = {
+      text: 'update users set id_token=$1 where id=$2',
+      values:[token.token,token.id]
+    };
+    try {
+      const res = await db.query(query);
+      const id:{id:number} = res.rows[0]
+      return  {...id,...token};
+    } catch (error) {
+      Logger.error(`Error SQL => ${error}`);
+      throw error;
+    } 
+  }
+
 }

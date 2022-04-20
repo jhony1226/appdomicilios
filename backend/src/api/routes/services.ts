@@ -1,4 +1,4 @@
-import { ServiceInput } from '../../models/service.model';
+import {  ServiceInput } from '../../models/service.model';
 import ServicesService from '../../services/services.service';
 import { UserInput, UserOutput } from '../../models/user.model';
 import UserService from '../../services/user.service';
@@ -108,17 +108,16 @@ export default (app: Router) => {
     }
   });
 
-  route.delete('/deleteService', 
-  celebrate({
-    [Segments.BODY]: Joi.object().keys({
-      idService:Joi.number().required()      
-    }),
-  }),
-  async (req: Request, res: Response) => {
+  route.delete('/deleteService/:id', 
+ 
+  async (req: Request, res: Response) => { 
     try {
       const serviceService = Container.get(ServicesService);
-      const service = await serviceService.deleteService(req.body as ServiceInput);
-      if(!service) return res.status(400).send({message:'Error, no se elimino el servicio'})
+      const serviceFind = await serviceService.findService(req.params['id'] );
+      if(!serviceFind) return res.status(400).send({message:'Servicio no existe'});
+      console.log( "ddddddd");   
+      const service = await serviceService.deleteService(req.params['id'] );
+       if(!service) return res.status(400).send({message:'Error, no se elimino el servicio'})
       return res.status(200).send({message:'Servicio eliminado correctamente'});
     } catch (error) {
       res.status(500).end();

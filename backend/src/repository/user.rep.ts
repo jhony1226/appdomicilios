@@ -1,4 +1,4 @@
-import  {UserInput, UserOutput} from  './../models/user.model';
+import  {  UserInput, UserOutput} from  './../models/user.model';
 
 
 export default interface UserRepository{
@@ -12,4 +12,5 @@ export default interface UserRepository{
     findPhone(user:UserInput): Promise<UserOutput>;  
     updateUser(user:UserInput):Promise<UserOutput>;  
     deleteUser(user:UserInput): Promise<UserInput>
+    registerTokenApk(token:any): Promise<any>
 }

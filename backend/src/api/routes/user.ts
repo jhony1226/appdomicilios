@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import Container from 'typedi';
-import { UserInput, UserOutput } from '../../models/user.model';
+import { TokenApp, UserInput, UserOutput } from '../../models/user.model';
 import UserService from '../../services/user.service';
 import { celebrate, Joi, Segments, errors } from 'celebrate';
 import bcrypt from 'bcrypt';
@@ -99,8 +99,7 @@ export default (app: Router) => {
 
     async (req: Request, res: Response) => {
       const userService = Container.get(UserService);
-      const user = await userService.findUser(req.body.email);
-      
+      const user = await userService.findUser(req.body.email); 
       
       if (!user) return res.status(400).send({ message: 'Wrong email or password' });
 
@@ -119,6 +118,51 @@ export default (app: Router) => {
             process.env.SK_JWT,
           ),
           userName: user.name,
+        });
+      } catch (e) {
+        return res.status(400).send({ message: 'Login error' });
+      }
+    },
+  );
+
+  
+  route.post('/loginDelivery',
+    celebrate({
+      [Segments.BODY]: Joi.object().keys({
+        email: Joi.string().trim().email().required(),
+        password: Joi.string().required(), 
+        token:Joi.string().required()
+      }),
+    }),
+
+    async (req: Request, res: Response) => {
+      const userService = Container.get(UserService);
+      const user = await userService.findUser(req.body.email);  
+      if (!user) return res.status(400).send({ message: 'Wrong email or password' });
+
+      //const hash = await bcrypt.compare(req.body.password, user.password);
+      //if (!hash) return res.status(400).send({ message: 'Wrong email or password' }); 
+     // if (user.idRole!=31) return res.status(400).send({ message: 'No tiene permisos ' });
+      try {
+        req.body.id=user.id;
+        console.log(req.body);
+        
+        const updateUser = await userService.updateTokenApk(req.body );
+
+        return res.status(200).json({
+          token: jwt.sign(
+            {
+              _id: user.idUser,
+              name: user.name,
+              roleId: user.idRole,
+              iat: moment().unix(),
+            },
+            process.env.SK_JWT,
+          ),
+          userName: user.name,
+          _id: user.idUser,
+          email: user.email
+
         });
       } catch (e) {
         return res.status(400).send({ message: 'Login error' });
@@ -190,9 +234,34 @@ export default (app: Router) => {
           const deleteUser = await userService.deleteUser(req.body as UserInput);
           if(!deleteUser) return res.status(400).send({message:'El usuario no se Elimino'});
 
-          return  res.status(400).send({message:'El usuario ha sido desactivado'});         
+          return  res.status(200).send({message:'El usuario ha sido desactivado'});         
         } catch (error) {
           res.status(500).end();
         }
       });
+/*
+      route.post(
+        '/registerTokenApk',  
+        celebrate({
+            [Segments.BODY]: Joi.object().keys({   
+            idToken: Joi.string().required(),
+            email: Joi.string().required(),
+          }),
+        }),
+    
+        async (req: Request, res: Response) => {
+          const userService = Container.get(UserService);
+          const findUser = await userService.findUser(req.body.email);
+          if (!findUser) return res.status(400).send({ message: 'El usuario no existe' }); 
+          try {
+             req.body.idUser=7; 
+             console.log(req.body); 
+             const token = await userService.registerTokenApk(req.body as TokenApp ); 
+             return res.status(200).send({message:token});
+          } catch (e) {
+            return res.status(400).send({ message: 'Register error' });
+          }
+        },
+      );
+      */
 };

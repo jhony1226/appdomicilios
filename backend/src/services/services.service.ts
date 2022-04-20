@@ -1,4 +1,4 @@
-import { ServiceInput, ServiceOutput, ServiceOutputAll } from '../models/service.model';
+import {  ServiceInput, ServiceOutput, ServiceOutputAll } from '../models/service.model';
 import ServiceRepository from '../repository/service.rep';
 import { ServiceInterface } from '../utils/helpers';
 import { Service } from 'typedi';
@@ -44,15 +44,17 @@ export default class ServicesService {
     }
   }
   
-  public async deleteService(service: ServiceInput): Promise<ServiceOutput> {
+  public async deleteService(service: any): Promise<ServiceOutput> {
     try {
       return await this.servicesInterface.deleteService(service);
     } catch (error) {
       throw error;
     }
   }
-  public async findService(service: ServiceInput): Promise<ServiceOutput> {
+  public async findService(service: any): Promise<ServiceOutput> {
     try {
+      console.log(service);
+      
       return await this.servicesInterface.findService(service);
     } catch (error) {
       throw error;

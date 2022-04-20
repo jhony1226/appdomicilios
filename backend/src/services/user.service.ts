@@ -28,7 +28,7 @@ export default class UserService {
       return await this.userInterface.getClients();
     } catch (error) {
       throw error;
-    }
+    } 
   }
   
   public async registerUser(user: UserInput): Promise<UserInput> {
@@ -39,7 +39,7 @@ export default class UserService {
     }
   }
 
-  public async findUser(email): Promise<UserOutput> {
+  public async findUser(email): Promise<any> {
     try {
       return await this.userInterface.findUser(email);
     } catch (error) {
@@ -83,7 +83,16 @@ export default class UserService {
     try {
       return await this.userInterface.updateUser(user)
     } catch (error) {
-      return error;
+      return error; 
     }
   }
+  public async updateTokenApk(token: any): Promise<UserOutput> {
+    try {
+      return await this.userInterface.registerTokenApk(token);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
 }

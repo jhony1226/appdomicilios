@@ -62,7 +62,7 @@
           <td mat-cell *matCellDef="let element" >
             <mat-icon [routerLink]="['/home/update-service/', element]" 
             class="colorUpdate">border_color</mat-icon> 
-            <mat-icon class="colorDelete  ">delete_forever</mat-icon> 
+            <mat-icon class="colorDelete" (click)="deleteService(element)">delete_forever</mat-icon> 
           </td>
         </ng-container>
         

@@ -7,7 +7,7 @@
         "node": "14.x",
         "npm": "7.x"
     },
-    "scripts": {
+    "scripts": { 
         "compile": "tsc",
         "dev": "nodemon",
         "start": "node build/app.js",

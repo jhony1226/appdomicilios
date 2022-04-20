@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit,  OnDestroy {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
   mobileQuery: MediaQueryList; 
