@@ -7,9 +7,10 @@ export default interface UserRepository{
     getClients(): Promise<UserOutput[]>;
     registerUser(user:UserInput):Promise<UserOutput>;
     findUser(email): Promise<UserOutput>;  
-    findUserById(user:UserInput):Promise<UserOutput>;
+    findUserById(user:any):Promise<UserOutput>;
     findEmail(user:UserInput): Promise<UserOutput>;
-    findPhone(user:UserInput): Promise<UserOutput>;  
+    findPhone(user:UserInput): Promise<UserOutput>;
+    findStatus(user:any): Promise<any>;  
     updateUser(user:UserInput):Promise<UserOutput>;  
     deleteUser(user:UserInput): Promise<UserInput>
     registerTokenApk(token:any): Promise<any>

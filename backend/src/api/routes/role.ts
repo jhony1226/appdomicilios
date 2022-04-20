@@ -108,5 +108,6 @@ route.get('/getRoles', async (req: Request, res: Response) => {
           res.status(500).end();
         }
       });
+      
 
 }

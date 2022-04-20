@@ -15,23 +15,26 @@ export default class UserDalService implements UserRepository {
       const res= await db.query(query);
       if(res.rowCount==1) return user;
     } catch (error) {
-      return error;
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   };
 
-  async deleteUser(user: UserInput): Promise<UserInput> {
+  async deleteUser(user: any): Promise<any> {
       
     const query = {
-        text: 'update users set status=$1 where id=$2',
-        values:[user.status,user.idUser]
+        text: `update users set status='I' where id=$1`,
+        values:[user]
       };
     
     try {
      const res= await db.query(query);
+         
      if(res.rowCount>=1)
      return user;
     } catch (error) {
-      return error;
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   }
   
@@ -43,7 +46,8 @@ export default class UserDalService implements UserRepository {
       const res = await db.query(query);  
       return res.rows;
     } catch (error) {
-      throw'mensaje';
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   }
 
@@ -56,22 +60,24 @@ export default class UserDalService implements UserRepository {
       const res = await db.query(query);  
       return res.rows;
     } catch (error) {
-      throw'mensaje';
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   }
 
   async getClients(): Promise<UserOutput[]> {
     try { 
       const query = {
-        text: 'select * from users where id_role=$1',
-        values:[30]
+        text: 'select * from users where id_role=$1 and status=$2',
+        values:[30,'A']
       };
            
       
       const res = await db.query(query);  
       return res.rows;
     } catch (error) {
-      throw'mensaje';
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   };
 
@@ -102,24 +108,24 @@ export default class UserDalService implements UserRepository {
       
       return res.rows[0] ;
     } catch (error) {
-      throw error;
-      ;
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   };
 
-  async findUserById(user:UserInput): Promise<UserOutput> {
+  async findUserById(user:any): Promise<UserOutput> {
     try {  
       const query = {
         text: 'select * from users  where id=$1',
-        values:[user.idUser]
+        values:[user]
       };
-      const res = await db.query(query); 
+      const res = await db.query(query);       
       if(res.rowCount>=1) return res.rows[0] ;
 
       return undefined;
     } catch (error) {
-      throw error;
-      ;
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   };
 
@@ -132,8 +138,8 @@ export default class UserDalService implements UserRepository {
       const res = await db.query(query); 
       return res.rows[0] ;
     } catch (error) {
-      throw error;
-      ;
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   }
 
@@ -146,8 +152,22 @@ export default class UserDalService implements UserRepository {
       const res = await db.query(query); 
       return res.rows[0] ;
     } catch (error) {
-      throw error;
-      ;
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
+    }
+  }
+
+  async findStatus(user:any): Promise<any> {
+    try {  
+      const query = {
+        text: 'select * from users  where id=$1',
+        values:[user]
+      };
+      const res = await db.query(query); 
+      return res.rows[0].status ;
+    } catch (error) {
+      Logger.error(`Error SQL => ${error}`);
+          throw error;
     }
   }
   

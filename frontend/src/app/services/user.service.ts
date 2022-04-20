@@ -31,11 +31,14 @@ export class UserService {
   updateUser(user:any,email:string){
     return this._http.put<any>(this.env+ 'user/updateUser/'+email,user);
   }
+  deleteUser(user: any) {
+    return this._http.delete<any>(this.env + 'user/deleteUser/'+user.id);
+  }
 
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('name');
-    this._route.navigate(['/login']); 
-  } 
+    this._route.navigate(['/login']);
+  }
 }

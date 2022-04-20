@@ -213,7 +213,7 @@ export default (app: Router) => {
     }
   );
 
-  route.delete('/deleteUser', 
+  route.delete('/deleteUser/:idUser', /*
       celebrate({[Segments.BODY]: Joi.object().keys({
         idUser:Joi.number().required(),
         idRole: Joi.number().required(),
@@ -224,15 +224,19 @@ export default (app: Router) => {
         status: Joi.string().required(),
        }),
        
-      }),
+      }),*/
       async (req: Request, res: Response) => {
         try {
+          
           const userService = Container.get(UserService);
-          const user = await userService.findUser(req.body.email as UserInput);
-          if (!user) return res.status(400).send({ message: 'Usuario no encontrado' });
+          const user = await userService.findUserById(req.params.idUser);
+          if (!user) return res.status(200).send({ message: 'Usuario no encontrado' });
 
-          const deleteUser = await userService.deleteUser(req.body as UserInput);
-          if(!deleteUser) return res.status(400).send({message:'El usuario no se Elimino'});
+          const statusUser = await userService.findStatus(req.params.idUser);
+          if(statusUser == 'I') return res.status(200).send({message:'El usuario ya esta Inactivo'});          
+
+          const deleteUser = await userService.deleteUser(req.params.idUser);
+          if(!deleteUser) return res.status(200).send({message:'El usuario no se desactivo'});
 
           return  res.status(200).send({message:'El usuario ha sido desactivado'});         
         } catch (error) {

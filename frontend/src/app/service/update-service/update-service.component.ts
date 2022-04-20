@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit,Inject, ViewChild } from '@angular/core';
 import {
   MatDialog,
@@ -27,7 +28,18 @@ export interface DialogData {
 export class UpdateServiceComponent implements OnInit {
   cliente: any;
   domicilio: any;
-  registerData: any;
+  registerData: any={
+    "idService":Number,
+      "idCliente":Number,
+      "idDeliv":Number,
+      "price":Number,
+      "destination":String,
+      "source":String,
+      "observation":String,
+      "idStatus":Number
+  };
+  registerDataService: any;
+
   nombre: string=''; 
   nombreDom: string='';
   idCliente:number=0; 
@@ -43,12 +55,44 @@ export class UpdateServiceComponent implements OnInit {
     public dialog: MatDialog,
     private _serviceService:ServiceService
   ) {
-    this.registerData = {};
+   
+    this.registerDataService = {};
    }
 
   ngOnInit(): void {
     this._Arouter.params.subscribe((params) => {
-      this.registerData=params["element"];
+      console.log(params);
+      
+      let service=params;
+      this._serviceService.listServiceById(service).subscribe({
+        next:(v)=>{   
+          //this._router.navigate(['/home/list-users'])
+          
+          
+          this.registerDataService=v.servicios[0]; //console.log(this.registerDataService[0].id);
+          
+          
+          this.nombre=this.registerDataService.name_client;
+          this.nombreDom=this.registerDataService.name_deliv;
+          this.idCliente=this.registerDataService.source.id_client;
+          this.idDom=this.registerDataService.source.id_deliv;
+
+          this.registerData.idService=this.registerDataService.id;
+          this.registerData.idCliente=this.registerDataService.id_client;
+          this.registerData.idDeliv=this.registerDataService.id_deliv;
+          this.registerData.price=this.registerDataService.price;
+          this.registerData.destination=this.registerDataService.destination;
+          this.registerData.source=this.registerDataService.source;
+          this.registerData.observation=this.registerDataService.observation;
+          this.registerData.idStatus=this.registerDataService.idStatus;
+
+        },
+        error:(e)=>{ 
+          console.log(e.error.message);
+          console.log("error"); 
+          
+         }
+      });
 
     })
   }
@@ -82,21 +126,21 @@ export class UpdateServiceComponent implements OnInit {
   }
 
   save(): void{
-    if (
-      !this.registerData.name ||
-      !this.registerData.email
-    ){
-      this.registerData.idCliente=this.idCliente;
+    
+     if(this.idDom!=undefined){
       this.registerData.idDeliv=this.idDom;
-      this.registerData.idStatus=1;
-      ;
-      console.log(this.domicilio);
+      
+      console.log(this.idDom);
+     }
+     if(this.idCliente!=undefined){
+      this.registerData.idCliente=this.idCliente;
+     }  
       
       console.log(this.registerData);
-      
-      this._serviceService.registerService(this.registerData).subscribe({
+      this.registerData.idStatus=1;
+      this._serviceService.upadateService(this.registerData).subscribe({
         next:(v)=>{   
-          //this._router.navigate(['/home/list-users'])
+          this._router.navigate(['/home/list-services'])
           this.registerData={}
           console.log("registrado");
           console.log(v);   
@@ -106,7 +150,7 @@ export class UpdateServiceComponent implements OnInit {
           console.log("error"); 
          }
       });
-    }
+    
   }
 
 } 

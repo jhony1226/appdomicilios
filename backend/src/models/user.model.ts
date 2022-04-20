@@ -9,7 +9,7 @@ export interface UserOutput {
   password: string;
   registerDate: Date;
   status: string;
-  idToken:string;
+  idToken:string; 
 }
 
 export interface UserInput {
@@ -21,7 +21,7 @@ export interface UserInput {
   password: string;
   registerDate: Date;
   status: string;
-  idToken:string;
+  idToken:string; 
 } 
 
 export interface TokenApp {

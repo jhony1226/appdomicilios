@@ -43,6 +43,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalDomiciliarioComponent } from './service/modal-domiciliario/modal-domiciliario.component';
 import { ListDeliveryComponent } from './user/list-delivery/list-delivery.component';
 import { ModalClientComponent } from './service/modal-client/modal-client.component';
+import { DetailServiceComponent } from './service/detail-service/detail-service.component';
 
  
 
@@ -66,7 +67,8 @@ import { ModalClientComponent } from './service/modal-client/modal-client.compon
     DialogOverviewExampleDialog,
     ModalDomiciliarioComponent,
     ListDeliveryComponent,
-    ModalClientComponent 
+    ModalClientComponent,
+    DetailServiceComponent 
   ],
   imports: [
     BrowserModule,
