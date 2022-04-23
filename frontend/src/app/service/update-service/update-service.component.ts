@@ -68,9 +68,12 @@ export class UpdateServiceComponent implements OnInit {
         next:(v)=>{   
           //this._router.navigate(['/home/list-users'])
           
+          console.log(v.servicios[0]);
           
           this.registerDataService=v.servicios[0]; //console.log(this.registerDataService[0].id);
-          
+
+          this.cliente=this.registerDataService.name_client;
+          this.domicilio=this.registerDataService.name_deliv;
           
           this.nombre=this.registerDataService.name_client;
           this.nombreDom=this.registerDataService.name_deliv;
