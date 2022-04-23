@@ -76,7 +76,7 @@ let ServicesService = class ServicesService {
     }
     async findService(service) {
         try {
-            console.log(service);
+            // console.log(service);
             return await this.servicesInterface.findService(service);
         }
         catch (error) {

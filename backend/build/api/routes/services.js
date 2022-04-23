@@ -29,9 +29,9 @@ exports.default = (app) => {
             const service = await serviceService.registerService(req.body);
             if (!service)
                 return res.status(400).send({ message: 'No se registro el servicio' });
+            console.log(service.idService);
             const user = await serviceService.findUser(req.body.idDeliv);
-            console.log(user['id_token']);
-            return res.status(200).send({ message: 'Servicio registrado exitosamente' });
+            return res.status(200).send({ message: 'Servicio registrado exitosamente', service: service });
         }
         catch (error) {
             return res.status(500).end();
@@ -39,8 +39,7 @@ exports.default = (app) => {
     });
     route.put('/updateService', async (req, res) => {
         try {
-            console.log("back updateService");
-            console.log(req.body);
+            // console.log("back updateService"); console.log(req.body);      
             const serviceService = typedi_1.default.get(services_service_1.default);
             const serviceFind = await serviceService.findService(req.body);
             if (!serviceFind)
@@ -56,7 +55,7 @@ exports.default = (app) => {
     });
     route.put('/updateStatus', async (req, res) => {
         try {
-            console.log(req.body);
+            // console.log(req.body);
             const serviceService = typedi_1.default.get(services_service_1.default);
             const serviceFind = await serviceService.findService(req.body);
             if (!serviceFind)
@@ -103,7 +102,7 @@ exports.default = (app) => {
     });
     route.get('/getServiceById/:id', async (req, res) => {
         try {
-            console.log(req.params.id);
+            // console.log(req.params.id);
             const serviceService = typedi_1.default.get(services_service_1.default);
             const service = await serviceService.getServiceById(req.params);
             if (service.length === 0)
@@ -154,15 +153,15 @@ exports.default = (app) => {
             };
             fcm.send(message, (err, response) => {
                 if (err) {
-                    console.log(err);
+                    // console.log(err);
                 }
                 else {
-                    console.log("send notifications");
+                    res.json(response);
                 }
             });
         }
         catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     });
     /*

@@ -35,13 +35,12 @@ export default (app: Router) => {
       
       const serviceService = Container.get(ServicesService); 
       const service = await serviceService.registerService(req.body as ServiceInput); 
-      if(!service) return res.status(400).send({message:'No se registro el servicio'}) 
-      const user = await serviceService.findUser(req.body.idDeliv);
+     
       
-      console.log(user['id_token']);
-       
+      if(!service) return res.status(400).send({message:'No se registro el servicio'})  
       
-      return res.status(200).send({message:'Servicio registrado exitosamente'});
+      const user = await serviceService.findUser(req.body.idDeliv); 
+      return res.status(200).send({message:'Servicio registrado exitosamente',service:service});
     
     } catch (error) {
       return res.status(500).end();
@@ -53,7 +52,7 @@ export default (app: Router) => {
 
   route.put('/updateService', async (req: Request, res: Response) => {
     try {
-      console.log("back updateService"); console.log(req.body);      
+     // console.log("back updateService"); console.log(req.body);      
       
       const serviceService = Container.get(ServicesService);
       const serviceFind = await serviceService.findService(req.body as  ServiceInput);
@@ -70,7 +69,7 @@ export default (app: Router) => {
 
   route.put('/updateStatus', async (req: Request, res: Response) => {
     try {
-      console.log(req.body);
+     // console.log(req.body);
       
       const serviceService = Container.get(ServicesService);
       const serviceFind = await serviceService.findService(req.body as  ServiceInput);
@@ -120,7 +119,7 @@ export default (app: Router) => {
 
   route.get('/getServiceById/:id', async (req: Request, res: Response) => {
     try {
-      console.log(req.params.id);
+     // console.log(req.params.id);
       
       const serviceService = Container.get(ServicesService);
       const service = await serviceService.getServiceById(req.params);
@@ -174,10 +173,10 @@ export default (app: Router) => {
   
     fcm.send(message,(err,response)=>{
       if(err){
-       console.log(err);
+      // console.log(err);
        
       }else{
-        console.log("send notifications");
+         res.json(response);
         
         
       }
@@ -185,7 +184,7 @@ export default (app: Router) => {
    
       
     } catch (error) {
-      console.log(error);
+     // console.log(error);
       
     }
   

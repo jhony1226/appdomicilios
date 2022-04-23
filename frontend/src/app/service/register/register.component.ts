@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       console.log( this.domicilio.id_token);  
       this.nombreDom=this.domicilio.name
       this.idDom=this.domicilio.id 
-     this.idToken=this.cliente.id_token
+     this.idToken=this.domicilio.id_token
      });
   }
   
@@ -88,11 +88,15 @@ export class RegisterComponent implements OnInit {
         id_token:this.idToken,
         title: "Servicio asignado",
         body_text: "Direccion:"+this.registerData.destination+" Total:$"+this.registerData.price,
-        data :this.registerData.id 
+        idService :this.registerData.id 
       }  
+      console.log(notification);
+      
       console.log("nuevo registro99");  
       this._serviceService.registerService(this.registerData).subscribe({
         next:(v)=>{   
+          console.log(v.id);
+          notification.idService=v.id
           this._serviceService.sendNotification(notification).subscribe({
             next:(v)=>{  
               console.log("notificacion enviada");  

@@ -61,7 +61,7 @@ export default class ServicesService {
   }
   public async findService(service: any): Promise<ServiceOutput> {
     try {
-      console.log(service);
+     // console.log(service);
       
       return await this.servicesInterface.findService(service);
     } catch (error) {

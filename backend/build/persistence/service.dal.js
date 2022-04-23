@@ -7,14 +7,17 @@ const postgresql_1 = __importDefault(require("../loaders/postgresql"));
 const logger_1 = __importDefault(require("../loaders/logger"));
 class ServicesDalService {
     async registerService(service) {
-        console.log(service);
+        // console.log(service); 
         const query = {
-            text: `INSERT INTO services(id_client,id_deliv,price,destination,source,observation,id_status,creation_date,closing_date) VALUES(${service.idCliente},${service.idDeliv},${service.price},'${service.destination}','${service.source}','${service.observation}',${service.idStatus},'2021-01-01','2021-01-02')`
+            text: `INSERT INTO services(id_client,id_deliv,price,destination,source,observation,id_status,creation_date,closing_date) VALUES(${service.idCliente},${service.idDeliv},${service.price},'${service.destination}','${service.source}','${service.observation}',${service.idStatus},'2021-01-01','2021-01-02')RETURNING ID`
         };
         try {
             const res = await postgresql_1.default.query(query);
-            if (res.rowCount >= 1)
-                return service;
+            console.log(res.rows);
+            if (res.rowCount >= 1) {
+                const id = res.rows[0];
+                return { ...id, ...service };
+            }
         }
         catch (error) {
             logger_1.default.error(`Error SQL => ${error}`);
@@ -69,8 +72,8 @@ class ServicesDalService {
     }
     ;
     async deleteService(service) {
-        console.log(service);
-        console.log("dsf");
+        //console.log(service);  
+        //console.log("dsf"); 
         const query = {
             text: 'delete from services where id=$1 ',
             values: [service]
@@ -135,7 +138,7 @@ class ServicesDalService {
     ;
     async findUserById(user) {
         try {
-            console.log(user);
+            // console.log(user);
             const query = {
                 text: 'select * from users  where id=$1',
                 values: [user]

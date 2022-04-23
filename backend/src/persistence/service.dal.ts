@@ -7,15 +7,18 @@ import { query } from 'winston';
 export default class ServicesDalService implements serviseRepository {
 
     async registerService(service:ServiceInput): Promise<ServiceOutput> {
-      console.log(service); 
+     // console.log(service); 
       const query = {
-        text: `INSERT INTO services(id_client,id_deliv,price,destination,source,observation,id_status,creation_date,closing_date) VALUES(${service.idCliente},${service.idDeliv},${service.price},'${service.destination}','${service.source}','${service.observation}',${service.idStatus},'2021-01-01','2021-01-02')`
+        text: `INSERT INTO services(id_client,id_deliv,price,destination,source,observation,id_status,creation_date,closing_date) VALUES(${service.idCliente},${service.idDeliv},${service.price},'${service.destination}','${service.source}','${service.observation}',${service.idStatus},'2021-01-01','2021-01-02')RETURNING ID`
       };
         try { 
           
-          const res = await db.query(query);  
-          if(res.rowCount>=1)
-          return service;
+          const res = await db.query(query);   
+         // console.log(res.rows);
+          if(res.rowCount>=1){
+             const id:{id:number} = res.rows[0]  
+             return  {...id,...service};
+          } 
         } catch (error) {
           Logger.error(`Error SQL => ${error}`);
       throw error;
@@ -69,8 +72,8 @@ export default class ServicesDalService implements serviseRepository {
       } ;
 
       async deleteService(service: any): Promise<ServiceInput> {  
-        console.log(service);  
-        console.log("dsf"); 
+        //console.log(service);  
+        //console.log("dsf"); 
         const query = {
             text: 'delete from services where id=$1 ',
             values:[service]
@@ -129,7 +132,7 @@ export default class ServicesDalService implements serviseRepository {
 
       async findUserById(user:any): Promise<any> {
         try {  
-          console.log(user);
+         // console.log(user);
           
           const query = {
             text: 'select * from users  where id=$1',
