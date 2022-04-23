@@ -42,6 +42,14 @@ let ServicesService = class ServicesService {
             throw error;
         }
     }
+    async getServiceById(service) {
+        try {
+            return await this.servicesInterface.getServiceById(service);
+        }
+        catch (error) {
+            throw error;
+        }
+    }
     async updateService(service) {
         try {
             return await this.servicesInterface.updateService(service);
@@ -73,6 +81,14 @@ let ServicesService = class ServicesService {
         }
         catch (error) {
             throw error;
+        }
+    }
+    async findUser(id) {
+        try {
+            return await this.servicesInterface.findUserById(id);
+        }
+        catch (error) {
+            return error;
         }
     }
 };

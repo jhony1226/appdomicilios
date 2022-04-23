@@ -5,8 +5,9 @@ import { ServiceInput, ServiceInputDel, ServiceOutput, ServiceOutputAll } from '
 import { query } from 'winston';
 
 export default class ServicesDalService implements serviseRepository {
-    async registerService(service:ServiceInput): Promise<ServiceOutput> {
 
+    async registerService(service:ServiceInput): Promise<ServiceOutput> {
+      console.log(service); 
       const query = {
         text: `INSERT INTO services(id_client,id_deliv,price,destination,source,observation,id_status,creation_date,closing_date) VALUES(${service.idCliente},${service.idDeliv},${service.price},'${service.destination}','${service.source}','${service.observation}',${service.idStatus},'2021-01-01','2021-01-02')`
       };
@@ -123,6 +124,24 @@ export default class ServicesDalService implements serviseRepository {
         } catch (error) {
           Logger.error(`Error SQL => ${error}`);
           throw error;
+        }
+      };
+
+      async findUserById(user:any): Promise<any> {
+        try {  
+          console.log(user);
+          
+          const query = {
+            text: 'select * from users  where id=$1',
+            values:[user]
+          };
+          const res = await db.query(query);   
+          if(res.rowCount>=1) return res.rows[0] ;
+    
+          return undefined;
+        } catch (error) {
+          Logger.error(`Error SQL => ${error}`);
+              throw error;
         }
       };
 }

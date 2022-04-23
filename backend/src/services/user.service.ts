@@ -6,6 +6,8 @@ import { Service } from 'typedi';
 
 @Service()
 export default class UserService {
+
+ 
   constructor(@UserInterface() private userInterface: UserRepository) {}
 
   public async getUsers(): Promise<UserOutput[]> {

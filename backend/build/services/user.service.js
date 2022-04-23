@@ -83,6 +83,14 @@ let UserService = class UserService {
             return error;
         }
     }
+    async findStatus(user) {
+        try {
+            return await this.userInterface.findStatus(user);
+        }
+        catch (error) {
+            return error;
+        }
+    }
     async deleteUser(user) {
         try {
             return await this.userInterface.deleteUser(user);

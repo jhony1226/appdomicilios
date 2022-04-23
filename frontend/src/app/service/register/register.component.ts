@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
   nombre: string=''; 
   nombreDom: string='';
   idCliente:number=0; 
+  idToken:string="";
   idDom: number=0; 
   celular:string='';
   message: string = ''; 
@@ -49,9 +50,10 @@ export class RegisterComponent implements OnInit {
     //dialogo para  domiciliarios
     dialogRef2.afterClosed().subscribe((result) => { 
       this.domicilio = result;
-      console.log( this.domicilio.name);  
+      console.log( this.domicilio.id_token);  
       this.nombreDom=this.domicilio.name
-      this.idDom=this.domicilio.id
+      this.idDom=this.domicilio.id 
+     this.idToken=this.cliente.id_token
      });
   }
   
@@ -81,13 +83,26 @@ export class RegisterComponent implements OnInit {
       console.log(this.domicilio);
       
       console.log(this.registerData);
-      
+
+      const notification={
+        id_token:this.idToken,
+        title: "Servicio asignado",
+        body_text: "Direccion:"+this.registerData.destination+" Total:$"+this.registerData.price,
+        data :this.registerData.id 
+      }  
+      console.log("nuevo registro99");  
       this._serviceService.registerService(this.registerData).subscribe({
         next:(v)=>{   
+          this._serviceService.sendNotification(notification).subscribe({
+            next:(v)=>{  
+              console.log("notificacion enviada");  
+            }
+          })
           //this._router.navigate(['/home/list-users'])
           this.registerData={}
-          console.log("registrado");
-          console.log(v);   
+          //console.log("registrado");
+          //console.log(v);  
+           
         },
         error:(e)=>{ 
           console.log(e.error.message);

@@ -173,24 +173,29 @@ exports.default = (app) => {
             return res.status(400).send({ message: "Error al intentar actualizar usuario" });
         return res.status(200).send({ message: 'Datos actualizados' });
     });
-    route.delete('/deleteUser', (0, celebrate_1.celebrate)({ [celebrate_1.Segments.BODY]: celebrate_1.Joi.object().keys({
-            idUser: celebrate_1.Joi.number().required(),
-            idRole: celebrate_1.Joi.number().required(),
-            name: celebrate_1.Joi.string().required(),
-            phone: celebrate_1.Joi.string().required(),
-            email: celebrate_1.Joi.string().required(),
-            password: celebrate_1.Joi.string().required(),
-            status: celebrate_1.Joi.string().required(),
-        }),
-    }), async (req, res) => {
+    route.delete('/deleteUser/:idUser', /*
+        celebrate({[Segments.BODY]: Joi.object().keys({
+          idUser:Joi.number().required(),
+          idRole: Joi.number().required(),
+          name: Joi.string().required(),
+          phone: Joi.string().required(),
+          email: Joi.string().required(),
+          password: Joi.string().required(),
+          status: Joi.string().required(),
+         }),
+         
+        }),*/ async (req, res) => {
         try {
             const userService = typedi_1.default.get(user_service_1.default);
-            const user = await userService.findUser(req.body.email);
+            const user = await userService.findUserById(req.params.idUser);
             if (!user)
-                return res.status(400).send({ message: 'Usuario no encontrado' });
-            const deleteUser = await userService.deleteUser(req.body);
+                return res.status(200).send({ message: 'Usuario no encontrado' });
+            const statusUser = await userService.findStatus(req.params.idUser);
+            if (statusUser == 'I')
+                return res.status(200).send({ message: 'El usuario ya esta Inactivo' });
+            const deleteUser = await userService.deleteUser(req.params.idUser);
             if (!deleteUser)
-                return res.status(400).send({ message: 'El usuario no se Elimino' });
+                return res.status(200).send({ message: 'El usuario no se desactivo' });
             return res.status(200).send({ message: 'El usuario ha sido desactivado' });
         }
         catch (error) {

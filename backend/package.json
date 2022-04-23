@@ -7,7 +7,7 @@
         "node": "14.x",
         "npm": "7.x"
     },
-    "scripts": { 
+    "scripts": {
         "compile": "tsc",
         "dev": "nodemon",
         "start": "node build/app.js",
@@ -42,6 +42,9 @@
         "event-dispatch": "^0.4.1",
         "eventemitter3": "^4.0.7",
         "express": "^4.17.3",
+        "fcm-node": "^1.6.1",
+        "firebase": "^9.6.11",
+        "firebase-admin": "^10.1.0",
         "jsonwebtoken": "^8.5.1",
         "moment": "^2.29.1",
         "pg": "^8.7.1",

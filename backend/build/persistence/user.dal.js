@@ -17,14 +17,15 @@ class UserDalService {
                 return user;
         }
         catch (error) {
-            return error;
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
         }
     }
     ;
     async deleteUser(user) {
         const query = {
-            text: 'update users set status=$1 where id=$2',
-            values: [user.status, user.idUser]
+            text: `update users set status='I' where id=$1`,
+            values: [user]
         };
         try {
             const res = await postgresql_1.default.query(query);
@@ -32,7 +33,8 @@ class UserDalService {
                 return user;
         }
         catch (error) {
-            return error;
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
         }
     }
     async getUsers() {
@@ -44,7 +46,8 @@ class UserDalService {
             return res.rows;
         }
         catch (error) {
-            throw 'mensaje';
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
         }
     }
     async getDeliverys() {
@@ -57,20 +60,22 @@ class UserDalService {
             return res.rows;
         }
         catch (error) {
-            throw 'mensaje';
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
         }
     }
     async getClients() {
         try {
             const query = {
-                text: 'select * from users where id_role=$1',
-                values: [30]
+                text: 'select * from users where id_role=$1 and status=$2',
+                values: [30, 'A']
             };
             const res = await postgresql_1.default.query(query);
             return res.rows;
         }
         catch (error) {
-            throw 'mensaje';
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
         }
     }
     ;
@@ -100,8 +105,8 @@ class UserDalService {
             return res.rows[0];
         }
         catch (error) {
+            logger_1.default.error(`Error SQL => ${error}`);
             throw error;
-            ;
         }
     }
     ;
@@ -109,7 +114,7 @@ class UserDalService {
         try {
             const query = {
                 text: 'select * from users  where id=$1',
-                values: [user.idUser]
+                values: [user]
             };
             const res = await postgresql_1.default.query(query);
             if (res.rowCount >= 1)
@@ -117,8 +122,8 @@ class UserDalService {
             return undefined;
         }
         catch (error) {
+            logger_1.default.error(`Error SQL => ${error}`);
             throw error;
-            ;
         }
     }
     ;
@@ -132,8 +137,8 @@ class UserDalService {
             return res.rows[0];
         }
         catch (error) {
+            logger_1.default.error(`Error SQL => ${error}`);
             throw error;
-            ;
         }
     }
     async findPhone(user) {
@@ -146,8 +151,22 @@ class UserDalService {
             return res.rows[0];
         }
         catch (error) {
+            logger_1.default.error(`Error SQL => ${error}`);
             throw error;
-            ;
+        }
+    }
+    async findStatus(user) {
+        try {
+            const query = {
+                text: 'select * from users  where id=$1',
+                values: [user]
+            };
+            const res = await postgresql_1.default.query(query);
+            return res.rows[0].status;
+        }
+        catch (error) {
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
         }
     }
     async registerTokenApk(token) {

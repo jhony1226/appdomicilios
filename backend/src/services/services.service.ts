@@ -68,4 +68,11 @@ export default class ServicesService {
       throw error;
     }
   }
+  public async findUser(id): Promise<any> {
+    try {
+      return await this.servicesInterface.findUserById(id);
+    } catch (error) {
+      return error;
+    }
+  }
 }

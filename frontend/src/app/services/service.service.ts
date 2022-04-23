@@ -33,4 +33,8 @@ export class ServiceService {
   upadateService(service:any){
     return this._http.put<any>(this.env+'services/updateService/',service);
   }
+  sendNotification(notification:any){
+    return this._http.post<any>(this.env+'services/fcm/',notification);
+  }
+  
 }

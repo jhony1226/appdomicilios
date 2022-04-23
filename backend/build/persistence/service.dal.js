@@ -7,6 +7,7 @@ const postgresql_1 = __importDefault(require("../loaders/postgresql"));
 const logger_1 = __importDefault(require("../loaders/logger"));
 class ServicesDalService {
     async registerService(service) {
+        console.log(service);
         const query = {
             text: `INSERT INTO services(id_client,id_deliv,price,destination,source,observation,id_status,creation_date,closing_date) VALUES(${service.idCliente},${service.idDeliv},${service.price},'${service.destination}','${service.source}','${service.observation}',${service.idStatus},'2021-01-01','2021-01-02')`
         };
@@ -25,6 +26,21 @@ class ServicesDalService {
         try {
             const query = {
                 text: 'select s.*, cliente.name as name_client, domi.name as name_deliv,st.name as name_status from services s inner join users as cliente on cliente.id=s.id_client inner join users as domi on domi.id=s.id_deliv inner join status_service as st on st.id_status_service=s.id_status',
+            };
+            const res = await postgresql_1.default.query(query);
+            return res.rows;
+        }
+        catch (error) {
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
+        }
+    }
+    ;
+    async getServiceById(service) {
+        try {
+            const query = {
+                text: 'select s.*, cliente.name as name_client, domi.name as name_deliv,st.name as name_status from services s inner join users as cliente on cliente.id=s.id_client inner join users as domi on domi.id=s.id_deliv inner join status_service as st on st.id_status_service=s.id_status where s.id=$1',
+                values: [service.id]
             };
             const res = await postgresql_1.default.query(query);
             return res.rows;
@@ -110,6 +126,24 @@ class ServicesDalService {
         try {
             const res = await postgresql_1.default.query(query);
             return res.rows[0];
+        }
+        catch (error) {
+            logger_1.default.error(`Error SQL => ${error}`);
+            throw error;
+        }
+    }
+    ;
+    async findUserById(user) {
+        try {
+            console.log(user);
+            const query = {
+                text: 'select * from users  where id=$1',
+                values: [user]
+            };
+            const res = await postgresql_1.default.query(query);
+            if (res.rowCount >= 1)
+                return res.rows[0];
+            return undefined;
         }
         catch (error) {
             logger_1.default.error(`Error SQL => ${error}`);
