@@ -49,8 +49,7 @@ export class RegisterComponent implements OnInit {
     });
     //dialogo para  domiciliarios
     dialogRef2.afterClosed().subscribe((result) => { 
-      this.domicilio = result;
-      console.log( this.domicilio.id_token);  
+      this.domicilio = result;  
       this.nombreDom=this.domicilio.name
       this.idDom=this.domicilio.id 
      this.idToken=this.domicilio.id_token
@@ -78,25 +77,22 @@ export class RegisterComponent implements OnInit {
     ){
       this.registerData.idCliente=this.idCliente;
       this.registerData.idDeliv=this.idDom;
-      this.registerData.idStatus=1;
-      ;
-      console.log(this.domicilio);
-      
-      console.log(this.registerData);
+      this.registerData.idStatus=1; 
 
       const notification={
         id_token:this.idToken,
         title: "Servicio asignado",
         body_text: "Direccion:"+this.registerData.destination+" Total:$"+this.registerData.price,
-        idService :this.registerData.id 
+        idService :0
       }  
-      console.log(notification);
+      //console.log(notification);
       
       console.log("nuevo registro99");  
       this._serviceService.registerService(this.registerData).subscribe({
         next:(v)=>{   
-          console.log(v.id);
+          console.log(v);
           notification.idService=v.id
+          console.log(v['id']);
           this._serviceService.sendNotification(notification).subscribe({
             next:(v)=>{  
               console.log("notificacion enviada");  
@@ -104,13 +100,15 @@ export class RegisterComponent implements OnInit {
           })
           //this._router.navigate(['/home/list-users'])
           this.registerData={}
+          this.domicilio={}
+          this.cliente=[]
           //console.log("registrado");
           //console.log(v);  
            
         },
         error:(e)=>{ 
           console.log(e.error.message);
-          console.log("error"); 
+         // console.log("error"); 
          }
       });
     }

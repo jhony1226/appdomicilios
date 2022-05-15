@@ -29,7 +29,6 @@ exports.default = (app) => {
             const service = await serviceService.registerService(req.body);
             if (!service)
                 return res.status(400).send({ message: 'No se registro el servicio' });
-            console.log(service.idService);
             const user = await serviceService.findUser(req.body.idDeliv);
             return res.status(200).send({ message: 'Servicio registrado exitosamente', service: service });
         }
@@ -144,7 +143,7 @@ exports.default = (app) => {
                 to: req.body.id_token,
                 notification: {
                     title: req.body.title,
-                    body: req.body.body_text
+                    body: req.body.body_text,
                 },
                 data: {
                     idService: req.body.idService
@@ -153,7 +152,6 @@ exports.default = (app) => {
             };
             fcm.send(message, (err, response) => {
                 if (err) {
-                    // console.log(err);
                 }
                 else {
                     res.json(response);

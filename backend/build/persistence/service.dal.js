@@ -13,7 +13,7 @@ class ServicesDalService {
         };
         try {
             const res = await postgresql_1.default.query(query);
-            console.log(res.rows);
+            // console.log(res.rows);
             if (res.rowCount >= 1) {
                 const id = res.rows[0];
                 return { ...id, ...service };

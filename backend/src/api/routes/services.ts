@@ -163,22 +163,17 @@ export default (app: Router) => {
       to: req.body.id_token,
       notification: {
         title: req.body.title,
-        body: req.body. body_text
+        body: req.body. body_text, 
       },
       data: {
         idService: req.body.idService
       },
       "sound":"default"
-    }
-  
+    } 
     fcm.send(message,(err,response)=>{
-      if(err){
-      // console.log(err);
-       
+      if(err){ 
       }else{
-         res.json(response);
-        
-        
+         res.json(response); 
       }
     })
    
