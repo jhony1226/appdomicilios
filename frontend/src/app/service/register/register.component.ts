@@ -9,6 +9,7 @@ import { ServiceService } from 'src/app/services/service.service';
 import { UserService } from 'src/app/services/user.service';
 import { ListServicesComponent } from '../list-services/list-services.component';
 import { ModalDomiciliarioComponent } from '../modal-domiciliario/modal-domiciliario.component';
+import Swal from 'sweetalert2';
 
 export interface DialogData {
  cliente: any;
@@ -88,13 +89,31 @@ export class RegisterComponent implements OnInit {
           this.registerData={}
           console.log("registrado");
           console.log(v);   
+          this.openSnackBarSuccesfull();
         },
         error:(e)=>{ 
           console.log(e.error.message);
           console.log("error"); 
+          this.openSnackBarError();
          }
       });
     }
+  }
+  openSnackBarSuccesfull() {
+    Swal.fire({
+  icon: 'success',
+  title: 'Servicio Registrado',
+  showConfirmButton: false,
+  timer: 1500
+})
+  }
+
+  openSnackBarError() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: this.message,
+    })
   }
 
 }
@@ -127,10 +146,11 @@ export class DialogOverviewExampleDialog {
         // this.isPo = v.verifyPo;
         this.dataSource = new MatTableDataSource(this.usersData);
         //this.dataSource.paginator = this.paginator;
+        //this.openSnackBarSuccesfull();
       },
       error: (e) => {
         //this.message = e.error.message;
-        //this.openSnackBarError();
+        this.openSnackBarError();
       },
     });
   }
@@ -140,6 +160,22 @@ export class DialogOverviewExampleDialog {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  openSnackBarSuccesfull() {
+    Swal.fire({
+  icon: 'success',
+  title: 'Servicio registrado',
+  showConfirmButton: false,
+  timer: 1500
+})
+  }
+
+  openSnackBarError() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'ERROR',
+    })
   }
 
    
