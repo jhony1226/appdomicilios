@@ -89,7 +89,7 @@ export class UpdateDeliveryComponent implements OnInit {
   openSnackBarSuccesfull() {
     Swal.fire({
   icon: 'success',
-  title: 'Cliente actualizado',
+  title: 'Domiciliario actualizado',
   showConfirmButton: false,
   timer: 1500
 })

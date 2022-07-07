@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router'; 
 import { UserService } from 'src/app/services/user.service';
 import { UpdateDeliveryComponent } from '../update-delivery/update-delivery.component';
+import Swal from 'sweetalert2';
 export interface DialogData { 
    domicilio: any;
  }
@@ -57,8 +58,8 @@ export class ListDeliveryComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       },
       error: (e) => {
-        //this.message = e.error.message;
-        //this.openSnackBarError();
+        this.message = e.error.message;
+        this.openSnackBarError();
       },
     });
   }
@@ -71,10 +72,13 @@ export class ListDeliveryComponent implements OnInit {
     this._userService.deleteUser(user).subscribe({
       next: (v) => {
         console.log(v);
-               
+        this.message='Usuario Desactivado'
+        this.openSnackBarSuccesfull();
+        this.ngOnInit();       
       },
       error: (e) => {
         this.message = e.error.message;
+        this.openSnackBarError();
         
       },
     });
@@ -100,6 +104,23 @@ export class ListDeliveryComponent implements OnInit {
       this.domiciliario = result;
       this.ngOnInit();      
      });
+  }
+
+  openSnackBarSuccesfull() {
+    Swal.fire({
+  icon: 'success',
+  title: this.message,
+  showConfirmButton: false,
+  timer: 1500
+})
+  }
+
+  openSnackBarError() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: this.message,
+    })
   }
 
 }
