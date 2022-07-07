@@ -79,35 +79,59 @@ export class RegisterComponent implements OnInit {
       this.registerData.idDeliv=this.idDom;
       this.registerData.idStatus=1; 
 
-      const notification={
+      const notificationapp={
         id_token:this.idToken,
         title: "Servicio asignado",
         body_text: "Direccion:"+this.registerData.destination+" Total:$"+this.registerData.price,
         idService :0
       }  
+      
+      const notification2={
+        id:0,
+        idService: 0,
+        status: 1,
+        title:"Servicio asignado",
+        subtitle: notificationapp.body_text,
+        fecha:'',
+        descripcion:"descripcion"
+      }
       //console.log(notification);
       
       console.log("nuevo registro99");  
       this._serviceService.registerService(this.registerData).subscribe({
         next:(v)=>{   
-          console.log(v);
-          notification.idService=v.id
-          console.log(v['id']);
-          this._serviceService.sendNotification(notification).subscribe({
-            next:(v)=>{  
-              console.log("notificacion enviada");  
-            }
-          })
-          //this._router.navigate(['/home/list-users'])
+          //console.log(v); 
           this.registerData={}
           this.domicilio={}
           this.cliente=[]
+          this.nombre=""
+          this.celular=""
+          this.nombreDom=""
+          notificationapp.idService=v.service["idService"]
+          notification2.idService=v.service.id
+          console.log( "serv:"+ v.service["idService"]);
+          console.log("notificacion2"+ v.service.id);
+          console.log("notificacion23"+ v.service["idService"]);
+          console.log("notificacion24"+v.service["id"]);
+          this._serviceService.sendNotification(notificationapp).subscribe({
+            next:(noti)=>{  
+              console.log("notificacion enviada");  
+            }
+          })
+          
+          this._serviceService.registerNotificacion(notification2).subscribe({
+            next:(notification)=>{  
+              console.log("notificacion registrada");  
+            }
+          })
+          //this._router.navigate(['/home/list-users'])
+         
           //console.log("registrado");
           //console.log(v);  
            
         },
         error:(e)=>{ 
-          console.log(e.error.message);
+          console.log("error servicio.ts" + e.error.message);
          // console.log("error"); 
          }
       });
@@ -115,6 +139,8 @@ export class RegisterComponent implements OnInit {
   }
 
 }
+
+
 
 @Component({
   selector: 'dialog-overview-example-dialog',

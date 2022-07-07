@@ -36,5 +36,11 @@ export class ServiceService {
   sendNotification(notification:any){
     return this._http.post<any>(this.env+'services/fcm/',notification);
   }
+  registerNotificacion(notification:any){
+    console.log("serv"+ notification);
+    
+    return this._http.post<any>(this.env+'notification/regNotification/',notification);
+  }
   
 }
+ 

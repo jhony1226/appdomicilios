@@ -8,6 +8,7 @@ const user_service_1 = __importDefault(require("../../services/user.service"));
 const express_1 = require("express");
 const typedi_1 = __importDefault(require("typedi"));
 const celebrate_1 = require("celebrate");
+const moment_1 = __importDefault(require("moment"));
 // import middlewares from '../middlewares';
 var FCM = require('fcm-node');
 const route = (0, express_1.Router)();
@@ -25,10 +26,12 @@ exports.default = (app) => {
         }),
     }), async (req, res) => {
         try {
+            req.body.fecha = (0, moment_1.default)().format();
             const serviceService = typedi_1.default.get(services_service_1.default);
             const service = await serviceService.registerService(req.body);
             if (!service)
                 return res.status(400).send({ message: 'No se registro el servicio' });
+            console.log(service);
             const user = await serviceService.findUser(req.body.idDeliv);
             return res.status(200).send({ message: 'Servicio registrado exitosamente', service: service });
         }
@@ -40,7 +43,7 @@ exports.default = (app) => {
         try {
             // console.log("back updateService"); console.log(req.body);      
             const serviceService = typedi_1.default.get(services_service_1.default);
-            const serviceFind = await serviceService.findService(req.body);
+            const serviceFind = await serviceService.findService(req.body['idService']);
             if (!serviceFind)
                 return res.status(400).send({ message: 'El servicio no existe' });
             const service = await serviceService.updateService(req.body);
@@ -54,9 +57,9 @@ exports.default = (app) => {
     });
     route.put('/updateStatus', async (req, res) => {
         try {
-            // console.log(req.body);
+            console.log(req.body['idService']);
             const serviceService = typedi_1.default.get(services_service_1.default);
-            const serviceFind = await serviceService.findService(req.body);
+            const serviceFind = await serviceService.findService(req.body['idService']);
             if (!serviceFind)
                 return res.status(400).send({ message: 'El servicio no existe' });
             const service = await serviceService.updateStatus(req.body);
@@ -148,7 +151,7 @@ exports.default = (app) => {
                 data: {
                     idService: req.body.idService
                 },
-                "sound": "default"
+                sound: "default"
             };
             fcm.send(message, (err, response) => {
                 if (err) {

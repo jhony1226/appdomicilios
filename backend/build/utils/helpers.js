@@ -3,12 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusServiceInterface = exports.RoleInterface = exports.UserInterface = exports.ServiceInterface = void 0;
+exports.NotificationInterface = exports.StatusServiceInterface = exports.RoleInterface = exports.UserInterface = exports.ServiceInterface = void 0;
 const service_dal_1 = __importDefault(require("../persistence/service.dal"));
 const user_dal_1 = __importDefault(require("../persistence/user.dal"));
 const role_dal_1 = __importDefault(require("../persistence/role.dal"));
 const statusService_dal_1 = __importDefault(require("../persistence/statusService.dal"));
 const typedi_1 = __importDefault(require("typedi"));
+const notifications_dal_1 = __importDefault(require("../persistence/notifications.dal"));
 function ServiceInterface() {
     return function (object, propertyName, index) {
         const serviceDalService = new service_dal_1.default();
@@ -37,4 +38,11 @@ function StatusServiceInterface() {
     };
 }
 exports.StatusServiceInterface = StatusServiceInterface;
+function NotificationInterface() {
+    return function (object, propertyName, index) {
+        const notificationDalService = new notifications_dal_1.default();
+        typedi_1.default.registerHandler({ object, propertyName, index, value: ContainerInstance => notificationDalService });
+    };
+}
+exports.NotificationInterface = NotificationInterface;
 //# sourceMappingURL=helpers.js.map

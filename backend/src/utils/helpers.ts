@@ -4,6 +4,7 @@ import UserDalService from '../persistence/user.dal';
 import RoleDalService from '../persistence/role.dal';
 import StatusServiceDalService from '../persistence/statusService.dal';
 import Container, { Constructable, ContainerInstance } from 'typedi';
+import NotificationDalService from '../persistence/notifications.dal';
 
  
 
@@ -32,6 +33,13 @@ export function StatusServiceInterface(){
   return function (object: Constructable<unknown>,propertyName: string,index?:number){
     const statusServiceDalService= new StatusServiceDalService();
     Container.registerHandler({object,propertyName,index,value: ContainerInstance=>statusServiceDalService})
+  }
+}
+
+export function NotificationInterface(){
+  return function (object: Constructable<unknown>,propertyName: string,index?:number){
+    const notificationDalService= new NotificationDalService();
+    Container.registerHandler({object,propertyName,index,value: ContainerInstance=>notificationDalService})
   }
 }
  

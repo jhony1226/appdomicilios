@@ -9,6 +9,8 @@ export interface ServiceInput {
   source: string;
   observation: string;
   idStatus: number;  
+  creation_date:Date;
+  closing_date:Date;
 }
 
 export interface ServiceOutput {
@@ -20,6 +22,8 @@ export interface ServiceOutput {
   source: string;
   observation: string;
   idStatus: number;
+  creation_date:Date;
+  closing_date:Date;
   
 }
 
@@ -35,6 +39,8 @@ export interface ServiceOutputAll {
   name_deliv: string;
   name_dlient: string;
   name_status: string;
+  creation_date:Date;
+  closing_date:Date;
   
 }
 

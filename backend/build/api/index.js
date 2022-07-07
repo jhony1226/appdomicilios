@@ -8,12 +8,14 @@ const services_1 = __importDefault(require("./routes/services"));
 const user_1 = __importDefault(require("./routes/user"));
 const role_1 = __importDefault(require("./routes/role"));
 const statusService_1 = __importDefault(require("./routes/statusService"));
+const notifications_1 = __importDefault(require("./routes/notifications"));
 exports.default = () => {
     const app = (0, express_1.Router)();
     (0, services_1.default)(app);
     (0, user_1.default)(app);
     (0, role_1.default)(app);
     (0, statusService_1.default)(app);
+    (0, notifications_1.default)(app);
     return app;
 };
 //# sourceMappingURL=index.js.map

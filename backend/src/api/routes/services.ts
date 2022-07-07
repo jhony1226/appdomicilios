@@ -6,6 +6,7 @@ import { Router, Request, Response, response } from 'express';
 import Container from 'typedi';
 import { celebrate, Joi, Segments, errors } from 'celebrate'; 
 import { initializeApp } from 'firebase-admin/app';
+import moment from 'moment';
 // import middlewares from '../middlewares';
 
 var FCM = require('fcm-node');
@@ -32,12 +33,15 @@ export default (app: Router) => {
   
   async (req: Request, res: Response) => {
     try {
-      
+      req.body.fecha= moment().format() 
       const serviceService = Container.get(ServicesService); 
       const service = await serviceService.registerService(req.body as ServiceInput); 
      
       
-      if(!service) return res.status(400).send({message:'No se registro el servicio'})  
+      if(!service) return res.status(400).send({message:'No se registro el servicio'}) 
+     
+      console.log( service);
+       
       
       const user = await serviceService.findUser(req.body.idDeliv); 
       return res.status(200).send({message:'Servicio registrado exitosamente',service:service});
@@ -55,7 +59,7 @@ export default (app: Router) => {
      // console.log("back updateService"); console.log(req.body);      
       
       const serviceService = Container.get(ServicesService);
-      const serviceFind = await serviceService.findService(req.body as  ServiceInput);
+      const serviceFind = await serviceService.findService(req.body['idService'] as  ServiceInput);
       if(!serviceFind) return res.status(400).send({message:'El servicio no existe'})
 
       const service = await serviceService.updateService(req.body as ServiceInput);
@@ -69,12 +73,12 @@ export default (app: Router) => {
 
   route.put('/updateStatus', async (req: Request, res: Response) => {
     try {
-     // console.log(req.body);
+     console.log(req.body['idService']);
       
       const serviceService = Container.get(ServicesService);
-      const serviceFind = await serviceService.findService(req.body as  ServiceInput);
+      const serviceFind = await serviceService.findService(req.body['idService']as  any);
       if(!serviceFind) return res.status(400).send({message:'El servicio no existe'})
-
+      
       const service = await serviceService.updateStatus(req.body as ServiceInput);
       if(!service) return res.status(400).send({message:'Error no se actualizo el servicio'});
 
@@ -168,7 +172,7 @@ export default (app: Router) => {
       data: {
         idService: req.body.idService
       },
-      "sound":"default"
+      sound:"default"
     } 
     fcm.send(message,(err,response)=>{
       if(err){ 

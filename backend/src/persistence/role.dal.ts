@@ -70,7 +70,7 @@ export default class RoleDalService implements RoleRepository {
         
     const query={
         text:`INSERT INTO roles(name,description,register_date,status) VALUES('${Role.name}','${Role.description}','2021-10-01','${Role.status}')`
-     // VALUES:[user.name,user.idRole,user.phone,user.email,user.password,user.registerDate,user.status],
+    // VALUES:[user.name,user.idRole,user.phone,user.email,user.password,user.registerDate,user.status],
      };
     try {
       const res = await db.query(query);

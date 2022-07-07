@@ -18,7 +18,7 @@ export default class statusServiceDalService implements  statusServiseRepository
           Logger.error(`Error SQL => ${error}`);
       throw error;
         }
-    }
+    } 
     getStatusServices(): Promise<StatusServiceOutput[]> {
         throw new Error('Method not implemented.');
     }
