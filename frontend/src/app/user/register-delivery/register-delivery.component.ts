@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-register-delivery',
@@ -27,6 +29,7 @@ export class RegisterDeliveryComponent implements OnInit {
       !this.registerDate.email ||
       !this.registerDate.password
     ) {
+      this.openSnackBarError();
       
     } else {
       this.registerDate.idRole="31";
@@ -41,17 +44,36 @@ export class RegisterDeliveryComponent implements OnInit {
           this.registerDate={}
           console.log("registrado");
           console.log(v);
+          this.openSnackBarSuccesfull();
           
         },
         error:(e)=>{ 
           console.log(e.error.message);
           console.log("error");
+          this.openSnackBarError();
           
           
          }
       });
     }
 
+  }
+
+  openSnackBarSuccesfull() {
+    Swal.fire({
+  icon: 'success',
+  title: this.message,
+  showConfirmButton: false,
+  timer: 1500
+})
+  }
+
+  openSnackBarError() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: this.message,
+    })
   }
 
 }

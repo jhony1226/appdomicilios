@@ -49,6 +49,7 @@
         "moment": "^2.29.3",
         "pg": "^8.7.1",
         "reflect-metadata": "^0.1.13",
+        "sweetalert2": "^11.4.19",
         "typedi": "^0.10.0",
         "winston": "^3.3.3"
     }

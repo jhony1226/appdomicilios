@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { DialogData } from '../list-delivery/list-delivery.component';
+import Swal from 'sweetalert2';
 
 
 
@@ -48,6 +49,8 @@ export class UpdateDeliveryComponent implements OnInit {
       ){
         this.message="ERROR. No hay cambios para aplicar"
         console.log(this.message);
+        this.openSnackBarError();
+        
       }
 
     else if (
@@ -61,6 +64,7 @@ export class UpdateDeliveryComponent implements OnInit {
     ) {
       this.message="ERROR. Datos incompletos"
       console.log(this.message); 
+      this.openSnackBarError();
     } else {
       
       this._userService.updateUser(this.registerData,this.email).subscribe({
@@ -70,15 +74,33 @@ export class UpdateDeliveryComponent implements OnInit {
           this.registerData={}
           console.log(v); 
            this.dialogRef.close(); 
+           this.openSnackBarSuccesfull();
           
         },
         error:(e)=>{ 
           console.log(e.error.message);
-          console.log("error");          
+          console.log("error"); 
+          this.openSnackBarError();         
          }
       });
     }
 
+  }
+  openSnackBarSuccesfull() {
+    Swal.fire({
+  icon: 'success',
+  title: 'Cliente actualizado',
+  showConfirmButton: false,
+  timer: 1500
+})
+  }
+
+  openSnackBarError() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: this.message,
+    })
   }
 
 }

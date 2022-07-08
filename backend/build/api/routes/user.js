@@ -91,13 +91,13 @@ exports.default = (app) => {
         if (!user)
             return res.status(400).send({ message: 'Wrong email or password' });
         //const hash = await bcrypt.compare(req.body.password, user.password);
-        //if (!hash) return res.status(400).send({ message: 'Wrong email or password' });
+        // if (!hash) return res.status(400).send({ message: 'Wrong email or password' });
         try {
             return res.status(200).json({
                 token: jsonwebtoken_1.default.sign({
                     _id: user.idUser,
                     name: user.name,
-                    roleId: user.idRole,
+                    //roleId: user.idRole,
                     iat: (0, moment_1.default)().unix(),
                 }, process.env.SK_JWT),
                 userName: user.name,

@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ListServicesComponent } from '../list-services/list-services.component';
 import { ModalClientComponent } from '../modal-client/modal-client.component';
 import { ModalDomiciliarioComponent } from '../modal-domiciliario/modal-domiciliario.component';
+import Swal from 'sweetalert2';
 
 
 
@@ -93,6 +94,7 @@ export class UpdateServiceComponent implements OnInit {
         error:(e)=>{ 
           console.log(e.error.message);
           console.log("error"); 
+          this.openSnackBarError();
           
          }
       });
@@ -147,13 +149,32 @@ export class UpdateServiceComponent implements OnInit {
           this.registerData={}
           console.log("registrado");
           console.log(v);   
+          this.openSnackBarSuccesfull();
         },
         error:(e)=>{ 
+          this.openSnackBarError();
           console.log(e.error.message);
           console.log("error"); 
+         
          }
       });
     
+  }
+  openSnackBarSuccesfull() {
+    Swal.fire({
+  icon: 'success',
+  title: 'Servicio Actualizado',
+  showConfirmButton: false,
+  timer: 1500
+})
+  }
+
+  openSnackBarError() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: this.message,
+    })
   }
 
 } 
