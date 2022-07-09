@@ -111,18 +111,13 @@ export default (app: Router) => {
     }
   });
 
-  route.delete('/deleteService', 
-  /**celebrate({
-    [Segments.BODY]: Joi.object().keys({
-      id:Joi.number().required()      
-    }),
-  }),*/
-  async (req: Request, res: Response) => {
+  route.delete('/deleteService/:id', async (req: Request, res: Response) => {
     try {
       console.log('ingreso');
+      console.log(req.params);
       
       const serviceService = Container.get(ServicesService);
-      const service = await serviceService.deleteService(req.body as ServiceInputDel);
+      const service = await serviceService.deleteService(req.params as any);
       if(!service) return res.status(400).send({message:'Error, no se elimino el servicio'})
       return res.status(200).send({message:'Servicio eliminado correctamente'});
     } catch (error) {

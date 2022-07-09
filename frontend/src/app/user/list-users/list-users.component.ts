@@ -52,24 +52,27 @@ export class ListUsersComponent implements OnInit {
     });
   }
 
-  eliminar(user:any){
-    
+  eliminar= async (user:any)=>{
+ 
     console.log({userDelete:user});
     
     console.log(user);
+        
+   if(await this.openSnackBarConfirmation()){
+      this._userService.deleteUser(user).subscribe({
+        next: (v) => {
+          console.log(v);
+          this.message='Usuario Desactivado'
+          this.openSnackBarSuccesfull();
+           this.ngOnInit();  
+        },
+        error: (e) => {
+          this.message = e.error.message;
+          this.openSnackBarError();
+        },
+      });
+    }
     
-    this._userService.deleteUser(user).subscribe({
-      next: (v) => {
-        console.log(v);
-        this.message='Usuario Desactivado'
-        this.openSnackBarSuccesfull();
-         this.ngOnInit();  
-      },
-      error: (e) => {
-        this.message = e.error.message;
-        this.openSnackBarError();
-      },
-    });
     
   }
 
@@ -111,4 +114,21 @@ export class ListUsersComponent implements OnInit {
       text: this.message,
     })
   }
+
+  openSnackBarConfirmation= async()=>{
+    let res;
+    await Swal.fire({
+      title: 'Esta seguro de eliminar el cliente?',
+      text: "No estara disponible luego de esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, bórralo!',
+    }).then((result) => {
+      res = result.isConfirmed;      
+    });
+    return res;
+  };
+  
 }

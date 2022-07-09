@@ -58,8 +58,7 @@ export class ListServicesComponent implements OnInit {
     });  
   }
   deleteService = async (service: any) => {
-    console.log(service);
-    
+    console.log(service); 
       this._serviceService.deleteService(service).subscribe({
         next: (v) => {
           let index = this.servicesData.indexOf(service);
@@ -67,7 +66,8 @@ export class ListServicesComponent implements OnInit {
             this.servicesData.splice(index, 1);
             this.dataSource = new MatTableDataSource(this.servicesData);
             this.dataSource.paginator = this.paginator;
-            this.message = 'Delete Project';
+            this.message = v.message;
+            console.log(v.message);
             
           }
         },

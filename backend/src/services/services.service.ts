@@ -44,7 +44,7 @@ export default class ServicesService {
       throw error;
     }
   }
-  public async deleteService(service: ServiceInputDel): Promise<any> {
+  public async deleteService(service: any): Promise<any> {
     try {
       return await this.servicesInterface.deleteService(service);
     } catch (error) {

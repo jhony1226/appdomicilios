@@ -25,10 +25,8 @@ export class ServiceService {
   registerService(service:any){
     return this._http.post<any>(this.env+'services/registerService/',service);
   }
-  deleteService(service: any) {
-    return this._http.delete<any>(
-      this.env + 'service/deleteService/' , service.id
-    );
+  deleteService(service: any) {             
+    return this._http.delete<any>(this.env + 'services/deleteService/' + service.id);
   }
   upadateService(service:any){
     return this._http.put<any>(this.env+'services/updateService/',service);
