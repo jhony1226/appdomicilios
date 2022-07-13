@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
 import { Service } from 'src/app/interfaces/servicio';
+import Swal from 'sweetalert2';
+
 
 import { ServiceService } from 'src/app/services/service.service';
  
@@ -52,13 +54,14 @@ export class ListServicesComponent implements OnInit {
          this.dataSource.paginator = this.paginator;
       },
       error: (e) => {
-        //this.message = e.error.message;
-        //this.openSnackBarError();
+        this.message = e.error.message;
+        this.openSnackBarError();
       },
     });  
   }
   deleteService = async (service: any) => {
     console.log(service); 
+    if(await this.openSnackBarConfirmation()){
       this._serviceService.deleteService(service).subscribe({
         next: (v) => {
           let index = this.servicesData.indexOf(service);
@@ -68,14 +71,17 @@ export class ListServicesComponent implements OnInit {
             this.dataSource.paginator = this.paginator;
             this.message = v.message;
             console.log(v.message);
+            this.openSnackBarSuccesfull();
             
           }
         },
         error: (e) => {
           this.message = e.error.message;
-          
+          this.openSnackBarError();
         },
       });
+    }
+      
     
   };
   applyFilter(event: Event) {
@@ -86,5 +92,37 @@ export class ListServicesComponent implements OnInit {
     }
   }
    
+  openSnackBarSuccesfull() {
+    Swal.fire({
+  icon: 'success',
+  title: this.message,
+  showConfirmButton: true,
+  timer: 1500
+})
+  }
+
+  openSnackBarError() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: this.message,
+    })
+  }
+
+  openSnackBarConfirmation= async()=>{
+    let res;
+    await Swal.fire({
+      title: 'Esta seguro de eliminar el servicio?',
+      text: "No estara disponible luego de esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, bórralo!',
+    }).then((result) => {
+      res = result.isConfirmed;      
+    });
+    return res;
+  };
 
 }
