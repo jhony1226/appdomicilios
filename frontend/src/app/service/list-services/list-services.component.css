@@ -7,9 +7,12 @@
 } 
 td,
 th {
-  width: 15%;
+  width: 0%;
+  text-align: center !important;
 }
-
+th.mat-header-cell {
+  text-align: center !important;
+}
 .bgComponent {
   background-color: #ffffff; 
   margin: 5px;
